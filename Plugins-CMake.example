@@ -1,0 +1,56 @@
+# Пример добавка за CMakeLists.txt - Qt6 PluginInterface за хибрид AyoGramDesktop
+# Добави в коренния CMakeLists.txt след add_subdirectory(core)
+
+set(CMAKE_PREFIX_PATH $ENV{CMAKE_PREFIX_PATH} CACHE PATH "Qt prefix" FORCE)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
+
+# Общ PluginInterface
+set(PLUGIN_SOURCES
+    plugins/PluginInterface/PluginInterface.h
+    plugins/PluginInterface/PluginInterface.cpp
+)
+
+# Ghost Mode Plugin
+add_library(ghostmodeplugin SHARED
+    plugins/ghostmode/GhostModePlugin.cpp
+    plugins/ghostmode/GhostModePlugin.h
+)
+target_link_libraries(ghostmodeplugin PRIVATE Qt6::Core Qt6::Widgets)
+qt6_add_plugin(ghostmodeplugin PLUGIN_TYPE ANY PLUGIN_CLASS_NAME "GhostModePlugin")
+set_target_properties(ghostmodeplugin PROPERTIES
+    OUTPUT_NAME "ghostmodeplugin"
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins"
+)
+
+# Stream Mode Plugin
+add_library(streammodeplugin SHARED
+    plugins/stream/StreamModePlugin.cpp
+    plugins/stream/StreamModePlugin.h
+)
+target_link_libraries(streammodeplugin PRIVATE Qt6::Core Qt6::Widgets)
+qt6_add_plugin(streammodeplugin PLUGIN_TYPE ANY PLUGIN_CLASS_NAME "StreamModePlugin")
+set_target_properties(streammodeplugin PROPERTIES
+    OUTPUT_NAME "streammodeplugin"
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins"
+)
+
+# Допълнителни готови плъгини
+foreach(plugin IN ITEMS localpremium translator filters mediapreview)
+    add_library(${plugin}plugin SHARED
+        plugins/${plugin}/${plugin}Plugin.cpp
+        plugins/${plugin}/${plugin}Plugin.h
+    )
+    target_link_libraries(${plugin}plugin PRIVATE Qt6::Core)
+    qt6_add_plugin(${plugin}plugin PLUGIN_TYPE ANY)
+    set_target_properties(${plugin}plugin PROPERTIES
+        OUTPUT_NAME "${plugin}plugin"
+        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins/${plugin}"
+    )
+endforeach()
+
+# Копирай мета данни JSON към build
+file(GLOB PLUGIN_JSON "plugins/*/plugin.json")
+foreach(json ${PLUGIN_JSON})
+    add_custom_command(TARGET ghostmodeplugin POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${json} $<TARGET_FILE_DIR:ghostmodeplugin>)
+endforeach()

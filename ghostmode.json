@@ -1,0 +1,11 @@
+{
+  "name": "GhostMode",
+  "version": "1.0.0",
+  "description": "Скрити съобщения и невидим статус",
+  "author": "AyoGram Team",
+  "enabled": true,
+  "settings": {
+    "invisible_typing": false,
+    "hide_read_receipts": false
+  }
+}

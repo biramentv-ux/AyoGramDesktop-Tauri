@@ -1,0 +1,35 @@
+# Tauri / Rust
+/target
+/src-tauri/target
+/.tauri
+
+# Node / Vite
+node_modules
+/dist
+/.vite
+
+# pnpm
+.pnpm-store
+
+# IDE
+.vscode
+.idea
+*.suo
+*.sln
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Builds
+/release
+/build
+/*.exe
+/*.msi
+/*.dmg
+/*.app
+
+# Misc
+*.log
+.env
+.env.local

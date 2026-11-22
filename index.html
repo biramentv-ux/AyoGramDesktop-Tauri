@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AyoGramDesktop</title>
+<style>
+ body { font-family: Segoe UI, sans-serif; background:#0e0e0e; color:#eee; margin:0; padding:20px; }
+ h1 { color:#4fc3f7 }
+ .card { background:#1e1e1e; padding:16px; border-radius:12px; margin:12px 0 }
+ button { background:#4fc3f7; border:none; padding:8px 16px; border-radius:8px; color:#000; cursor:pointer }
+</style>
+</head>
+<body>
+<h1>AyoGram Desktop Hybrid</h1>
+<div class="card">
+<h2>Ghost Mode</h2>
+<div id="ghost"></div>
+<button onclick="toggleGhost('invisible_typing')">Toggle Invisible Typing</button>
+<button onclick="toggleGhost('hide_read_receipts')">Toggle Read Receipts</button>
+</div>
+<div class="card">
+<h2>Stream Mode</h2>
+<div id="stream"></div>
+</div>
+<script src="https://unpkg.com/@tauri-apps/api@^1/dist/tauri.js"></script>
+<script>
+async function refresh(){
+ const ghost = await window.__TAURI__.invoke('get_ghost_mode');
+ document.getElementById('ghost').innerText = JSON.stringify(ghost);
+ const stream = await window.__TAURI__.invoke('get_stream_mode');
+ document.getElementById('stream').innerText = JSON.stringify(stream);
+}
+async function toggleGhost(key){
+ await window.__TAURI__.invoke('toggle_ghost_mode', { key });
+ refresh();
+}
+refresh();
+setInterval(refresh, 2000);
+</script>
+</body>
+</html>

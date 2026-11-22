@@ -1,0 +1,6 @@
+{
+    "name": "FakePaymentInterceptor",
+    "version": "1.0",
+    "description": "Прихваща TL_payments_sendStarsForm и връща фалшив TL_payments_paymentResult - без реално плащане",
+    "author": "AyuGram Team"
+}

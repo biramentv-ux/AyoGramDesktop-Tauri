@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  tauri-build:
+    image: ghcr.io/tauri-apps/tauri-action:latest
+    container_name: ayogram-tauri-build
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    environment:
+      - CI=true
+    command: ["bash", "-c", "apt-get update && apt-get install -y curl && curl -sSf https://raw.githubusercontent.com/tauri-apps/tauri/master/tooling/installer/install.sh | sh && pnpm install && pnpm build && cargo tauri build --release"]
+    # За Windows CI ползвай GitHub Actions: https://github.com/tauri-apps/tauri-action
+
+  # Локален Windows PowerShell тест
+  windows-test:
+    image: mcr.microsoft.com/windows/servercore:ltsc2022
+    container_name: ayogram-windows-test
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: powershell -Command "./Build-Tauri.ps1"

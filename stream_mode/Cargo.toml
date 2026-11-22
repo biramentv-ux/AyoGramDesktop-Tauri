@@ -1,0 +1,11 @@
+[package]
+name = "stream_mode"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "stream_mode"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }

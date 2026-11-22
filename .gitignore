@@ -33,3 +33,19 @@ Thumbs.db
 *.log
 .env
 .env.local
+
+# Session / local data that must never be committed
+AppData/
+Google/
+Microsoft/
+.unsloth_attachments/
+Claude/
+npm-cache/
+unsloth-tmp/
+tauri-src/
+tu-src/
+build_cfg.txt
+*.crate
+*.tgz
+*.lnk
+.gitconfig

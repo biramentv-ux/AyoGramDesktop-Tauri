@@ -16,8 +16,9 @@ struct StreamModeState {
 }
 
 #[tauri::command]
-fn get_ghost_mode(state: tauri::State<GhostModeState>) -> GhostModeState {
-    state.inner().clone()
+fn get_ghost_mode(state: tauri::State<tauri::Mutex<GhostModeState>>) -> Result<GhostModeState, String> {
+    let s = state.lock().map_err(|e| e.to_string())?;
+    Ok(s.clone())
 }
 
 #[tauri::command]
@@ -48,15 +49,6 @@ fn main() {
         .add_item(&quit);
 
     let system_tray = SystemTray::new().set_menu(tray_menu);
-
-    let ghost_state = tauri::State::new(tauri::Mutex::new(GhostModeState {
-        invisible_typing: false,
-        hide_read_receipts: false,
-    }));
-    let stream_state = tauri::State::new(StreamModeState {
-        enabled: false,
-        quality: "720p".into(),
-    });
 
     tauri::Builder::default()
         .system_tray(system_tray)

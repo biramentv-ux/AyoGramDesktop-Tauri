@@ -2,90 +2,37 @@
   "build": {
     "beforeBuildCommand": "npm run build",
     "beforeDevCommand": "npm run dev",
-    "devPath": "./src-tauri/src-tauri-frontend/",
-    "distDir": "../dist",
-    "frontendDist": "../dist"
+    "distDir": "dist",
+    "devPath": "http://localhost:5173"
   },
   "package": {
     "productName": "AyoGramDesktop",
     "version": "1.0.0"
   },
   "tauri": {
-    "allowlist": {
-      "all": true
-    },
+    "windows": [
+      {
+        "label": "main",
+        "title": "AyoGram Desktop",
+        "width": 1000,
+        "height": 800,
+        "minWidth": 900,
+        "minHeight": 600,
+        "maxWidth": 1400,
+        "maxHeight": 1200,
+        "resizable": true,
+        "center": true
+      }
+    ],
     "bundle": {
       "active": true,
-      "category": "Utility",
-      "copyright": "AyoGram Team",
-      "externalBins": [],
-      "icon": [
-        "icons/128x128.png",
-        "icons/icon.ico",
-        "icons/icon.icns"
-      ],
+      "targets": ["nsis"],
       "identifier": "com.ayogram.desktop",
-      "longDescription": "AyoGramDesktop хибрид - Qt/Telegram клиент с Ghost Mode и Stream Mode",
-      "shortDescription": "Portable Telegram desktop клиент",
-      "target": {
-        "windows": {
-          "fileExtension": "exe",
-          "shortName": "AyoGramDesktop",
-          "symbolicIcons": true
-        }
-      },
-      "windows": {
-        "certificateThumbprint": null,
-        "nsis": {
-          "allowElevation": false,
-          "allowToChangeInstallMode": true,
-          "createDesktopShortcut": true,
-          "createStartMenuShortcut": true,
-          "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-          "installerChunkSize": 0,
-          "installerName": "AyoGramDesktop_Installer_${arch}.${ext}",
-          "menuCategory": "AyoGram",
-          "perMachine": false,
-          "requireAdministrator": false
-        },
-        "wix": {
-          "shortName": "AyoGramDesktop"
-        }
-      }
-    },
-    "updater": {
-      "active": true,
-      "dialog": true,
-      "endpoints": [
-        "https://updates.ayogram.dev/releases/{{version}}"
-      ],
-      "pubkey": "YOUR_PUBLIC_KEY_HERE"
-    },
-    "security": {
-      "csp": null,
-      "freeze": false
-    },
-    "systemTray": {
-      "iconPath": "icons/tray.png",
-      "iconAsTemplate": true
-    },
-    "window": {
-      "center": true,
-      "decorations": true,
-      "fullscreen": false,
-      "height": 800,
-      "maxHeight": 1200,
-      "maxWidth": 1400,
-      "minHeight": 600,
-      "minWidth": 900,
-      "resizable": true,
-      "title": "AyoGram Desktop",
-      "visible": true,
-      "width": 1000
-    },
-    "macOS": {
-      "appCategoryType": "public.app-category.utilities",
-      "minimumSystemVersion": "13.0"
+      "copyright": "AyoGram Team",
+      "shortDescription": "Portable Telegram desktop client",
+      "longDescription": "Telegram-inspired cross-platform desktop app built with Tauri v1 and Vite — portable Windows build.",
+      "category": "Utility",
+      "icon": ["icons/32x32.png", "icons/128x128.png", "icons/icon.ico"]
     }
   }
 }

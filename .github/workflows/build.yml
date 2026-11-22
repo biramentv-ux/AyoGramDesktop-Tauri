@@ -43,7 +43,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          projectPath: src-tauri
           releaseId: ${{ github.run_id }}
           args: --release
 
@@ -51,4 +50,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: AyoGramDesktop-${{ matrix.os }}
-          path: src-tauri/target/release/bundles/**
+          path: |
+          target/release/ayogram_desktop.exe
+          target/release/bundle/nsis/*.exe

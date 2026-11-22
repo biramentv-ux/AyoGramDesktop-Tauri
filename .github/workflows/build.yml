@@ -27,7 +27,7 @@ jobs:
           toolchain: stable
 
       - name: Install pnpm
-        run: npm install -g pnpm
+        run: npm install -g pnpm@8.15.9
 
       - name: Install dependencies
         run: pnpm install

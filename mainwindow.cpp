@@ -26,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     PluginManager::instance().loadPlugins();
     
     // Set window properties
-    setWindowTitle(tr("AyoGram Desktop Hybrid"));
+    setWindowTitle(tr("dyrakDGram"));
     resize(800, 600);
 }
 
@@ -296,8 +296,8 @@ void MainWindow::onFilterSettings()
 
 void MainWindow::onAbout()
 {
-    QMessageBox::about(this, tr("Относно AyoGram Desktop Hybrid"),
-                       tr("Хибридно приложение между AyoGram и exDekstop с поддръжка на български език.\n"
+    QMessageBox::about(this, tr("Относно dyrakDGram"),
+                       tr("Хибридно приложение между dyrakDGram и exDekstop с поддръжка на български език.\n"
                           "Не изисква Android emulator и е desktop Windows клиент."));
 }
 

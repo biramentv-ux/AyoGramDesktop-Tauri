@@ -14,7 +14,7 @@ public:
     virtual void unload() = 0;
 };
 
-#define PluginInterface_iid "org.ayugram.PluginInterface/1.0"
+#define PluginInterface_iid "org.dyrak_dgram.PluginInterface/1.0"
 Q_DECLARE_INTERFACE(PluginInterface, PluginInterface_iid)
 
 #endif // PLUGININTERFACE_H

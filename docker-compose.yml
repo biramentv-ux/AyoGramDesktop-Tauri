@@ -2,7 +2,7 @@ version: "3.8"
 services:
   tauri-build:
     image: ghcr.io/tauri-apps/tauri-action:latest
-    container_name: ayogram-tauri-build
+    container_name: dyrak_dgram-tauri-build
     volumes:
       - .:/workspace
     working_dir: /workspace
@@ -14,7 +14,7 @@ services:
   # Локален Windows PowerShell тест
   windows-test:
     image: mcr.microsoft.com/windows/servercore:ltsc2022
-    container_name: ayogram-windows-test
+    container_name: dyrak_dgram-windows-test
     volumes:
       - .:/workspace
     working_dir: /workspace

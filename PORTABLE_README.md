@@ -1,8 +1,8 @@
-# AyoGram Desktop Hybrid - Portable Version
+# dyrakDGram - Portable Version
 
 ## Характеристики
 
-- **Хибрид между AyoGram и exDekstop**
+- **Хибрид между dyrakDGram и exDekstop**
 - **Без Android emulator** - директен desktop Windows клиент
 - **Portable версия** - работи от USB без инсталация
 - **Готови плъгини**: Ghost Mode, Stream Mode
@@ -23,14 +23,14 @@
 ## Стартиране
 
 1. Разопаковай архива
-2. Стартирай `AyoGramDesktopHybrid.exe`
+2. Стартирай `dyrakDGramHybrid.exe`
 3. Приложението е готово за работа
 
 ## Структура
 
 ```
-AyoGramDesktopHybrid_Portable/
-├── AyoGramDesktopHybrid.exe
+dyrakDGramHybrid_Portable/
+├── dyrakDGramHybrid.exe
 ├── plugins/
 │   ├── ghostmodeplugin.dll
 │   └── streammodeplugin.dll

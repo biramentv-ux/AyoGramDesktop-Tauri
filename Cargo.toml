@@ -1,8 +1,8 @@
 [package]
-name = "ayogram_desktop"
-version = "1.0.0"
+name = "dyrak_dgram"
+version = "2.0.0"
 edition = "2021"
-description = "Portable Telegram desktop client built with Tauri v1 and Vite"
+description = "Портативен Telegram клиент с български интерфейс, изграден върху оригинален Telegram"
 
 [build-dependencies]
 tauri-build = "1"
@@ -29,5 +29,5 @@ members = ["ghost_mode", "stream_mode", "src-tauri/plugins/fuck_payments", "src-
 before_build_command = "npm run build"
 
 [[bin]]
-name = "ayogram_desktop"
+name = "dyrak_dgram"
 path = "src-tauri/src/main.rs"

@@ -18,7 +18,7 @@ Set-ExecutionPolicy -Scope Process -Bypass
 
 ## 3. Run
 
-Portable: `release/AyoGramDesktop_Portable/AyoGramDesktop.exe`
-Installer: `src-tauri/target/release/bundles/msi/AyoGramDesktop_*.msi`
+Portable: `release/dyrakDGram_Portable/dyrakDGram.exe`
+Installer: `src-tauri/target/release/bundles/msi/dyrakDGram_*.msi`
 
 Готово!

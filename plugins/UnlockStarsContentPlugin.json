@@ -1,6 +1,8 @@
 {
-    "name": "UnlockStarsContent",
-    "version": "1.0",
-    "description": "Отключва съдържание изискващо Stars",
-    "author": "AyuGram Team"
+  "name": "UnlockStarsContent",
+  "version": "2.0.0",
+  "author": "dyrakDGram",
+  "architecture": "python-stdlib",
+  "entry": "unlock_stars_content.py",
+  "description": "Отключва съдържание изискващо Stars без истинско плащане; подписът се проверява повторно"
 }

@@ -1,4 +1,4 @@
-# init-git.ps1 - Инициализирай git repo за AyoGramDesktop Tauri
+# init-git.ps1 - Инициализирай git repo за dyrakDGram Tauri
 
 Write-Host "Инициализация на Git repo..." -ForegroundColor Green
 

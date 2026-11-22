@@ -9,10 +9,10 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     
     // Set application properties
-    app.setApplicationName("AyoGram Desktop Hybrid");
+    app.setApplicationName("dyrakDGram");
     app.setApplicationVersion("1.0");
-    app.setOrganizationName("AyuGram");
-    app.setOrganizationDomain("ayugram.org");
+    app.setOrganizationName("dyrakDGram");
+    app.setOrganizationDomain("dyrak_dgram.org");
     
     // Set up locale for Bulgarian language
     QLocale::setDefault(QLocale::Bulgarian);

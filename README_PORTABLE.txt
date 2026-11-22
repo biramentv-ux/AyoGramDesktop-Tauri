@@ -1,9 +1,9 @@
-AyoGram Desktop Hybrid - Portable
+dyrakDGram - Portable
 
-Това е portable версия на хибридното приложение AyoGram/exDekstop.
+Това е portable версия на хибридното приложение dyrakDGram/exDekstop.
 
 Запускане:
-1. Стартирайте AyoGramDesktop.exe
+1. Стартирайте dyrakDGram.exe
 2. Плъгините се зареждат автоматично от папка plugins/
 
 Плъгини включени:

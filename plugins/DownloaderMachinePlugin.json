@@ -1,6 +1,8 @@
 {
-    "name": "DownloaderMachine",
-    "version": "1.0",
-    "description": "Режим за сваляне на Spotify албуми/песни/плейлисти в lossless качество",
-    "author": "AyuGram Team"
+  "name": "DownloaderMachine",
+  "version": "2.0.0",
+  "author": "dyrakDGram",
+  "architecture": "python-stdlib",
+  "entry": "downloader_machine.py",
+  "description": "Подготвя изтегляния от Spotify и верифицира manifestа повторно (checksum + структура)"
 }

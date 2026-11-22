@@ -8,13 +8,13 @@
 
 ### Инсталация
 
-1. Свали `AyoGramDesktop_{{VERSION}}_x64.msi`
+1. Свали `dyrakDGram_{{VERSION}}_x64.msi`
 2. Пусни инсталатора
-3. Стартирай `AyoGramDesktop.exe` от менюто
+3. Стартирай `dyrakDGram.exe` от менюто
 
 ### Portable
 
-За portable версия използвай `AyoGramDesktop_Portable.zip` без инсталация.
+За portable версия използвай `dyrakDGram_Portable.zip` без инсталация.
 
 ### Системни изисквания
 

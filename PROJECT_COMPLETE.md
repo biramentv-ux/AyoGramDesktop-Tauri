@@ -1,4 +1,4 @@
-# AyoGramDesktop Tauri - Project Complete Overview
+# dyrakDGram Tauri - Project Complete Overview
 
 ## Създадени файлове
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Building AyoGram Desktop Hybrid Application"
+echo "Building dyrakDGram Application"
 
 # Create build directory
 mkdir -p build

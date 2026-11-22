@@ -1,4 +1,4 @@
-# Плъгини - AyoGram Desktop Hybrid
+# Плъгини - dyrakDGram
 
 ## Готови плъгини
 

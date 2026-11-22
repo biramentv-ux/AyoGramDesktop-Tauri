@@ -1,8 +1,8 @@
-# Build-Tauri.ps1 - Пълен инсталиращ и build-ващ Tauri хибрид за AyoGramDesktop
+# Build-Tauri.ps1 - Пълен инсталиращ и build-ващ Tauri хибрид за dyrakDGram
 # Windows portable + installer, един клик
 
 param(
-    [string]$ProjectName = "AyoGramDesktop",
+    [string]$ProjectName = "dyrakDGram",
     [string]$ReleaseDir  = "$PSScriptRoot\release"
 )
 

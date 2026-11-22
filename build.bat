@@ -1,6 +1,6 @@
 @echo off
 
-echo Building AyoGram Desktop Hybrid Application
+echo Building dyrakDGram Application
 
 cd /d "%~dp0"
 

@@ -1,4 +1,4 @@
-# Build-All.ps1 - Пълен автоматичен build за AyoGramDesktop хибрид
+# Build-All.ps1 - Пълен автоматичен build за dyrakDGram хибрид
 # Qt 6 + TDLib, portable Windows клиент, с aqtinstall
 
 param(
@@ -10,7 +10,7 @@ param(
     [string]$BuildDir   = "$ProjectDir\build"
 )
 
-Write-Host "=== AyoGramDesktop Build-All ===" -ForegroundColor Green
+Write-Host "=== dyrakDGram Build-All ===" -ForegroundColor Green
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
@@ -79,10 +79,10 @@ if ($LASTEXITCODE -ne 0) { Write-Error "Build неуспешен"; exit 1 }
 Pop-Location
 
 # 8. Portable пакет
-$PortableDir = "$ProjectDir\AyoGramDesktop_Portable"
+$PortableDir = "$ProjectDir\dyrakDGram_Portable"
 if (Test-Path $PortableDir) { Remove-Item $PortableDir -Recurse -Force }
 mkdir $PortableDir | Out-Null
-Copy-Item "$BuildDir\$BuildType\AyoGramDesktop.exe" $PortableDir
+Copy-Item "$BuildDir\$BuildType\dyrakDGram.exe" $PortableDir
 Copy-Item "$ProjectDir\translations" $PortableDir -Recurse
 Copy-Item "$ProjectDir\plugins" $PortableDir -Recurse
 Copy-Item "$ProjectDir\ayu_settings.json" $PortableDir -ErrorAction SilentlyContinue
@@ -92,5 +92,5 @@ if (Test-Path "$QtPath\plugins") {
     Copy-Item "$QtPath\plugins\platforms\qwindows.dll" "$PortableDir\plugins\platforms" -ErrorAction SilentlyContinue
 }
 
-Write-Host "Готово! Изпълним файл: $BuildDir\$BuildType\AyoGramDesktop.exe" -ForegroundColor Green
+Write-Host "Готово! Изпълним файл: $BuildDir\$BuildType\dyrakDGram.exe" -ForegroundColor Green
 Write-Host "Portable пакет: $PortableDir" -ForegroundColor Green

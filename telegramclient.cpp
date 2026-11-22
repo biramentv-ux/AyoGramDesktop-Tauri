@@ -33,14 +33,14 @@ void TelegramClient::stop()
 
 void TelegramClient::loadSession()
 {
-    QSettings settings("AyuGram", "AyoGramDesktop");
+    QSettings settings("dyrakDGram", "dyrakDGram");
     phoneNumber = settings.value("telegram/phone", "").toString();
     isAuthenticated = settings.value("telegram/authenticated", false).toBool();
 }
 
 void TelegramClient::saveSession()
 {
-    QSettings settings("AyuGram", "AyoGramDesktop");
+    QSettings settings("dyrakDGram", "dyrakDGram");
     settings.setValue("telegram/phone", phoneNumber);
     settings.setValue("telegram/authenticated", isAuthenticated);
     emit sessionSaved();

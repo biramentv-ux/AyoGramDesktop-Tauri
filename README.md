@@ -1,4 +1,4 @@
-# 🚀 AyoGram Desktop Hybrid - Tauri Edition
+# 🚀 dyrakDGram - Tauri Edition
 
 > **Telegram, но по твой начин.** Хибриден desktop клиент с Ghost Mode и Stream Mode.
 >
@@ -31,8 +31,8 @@
 
 ```powershell
 # Копирай репото и отвори PowerShell в него:
-git clone https://github.com/biramentv-ux/AyoGramDesktop-Tauri.git
-cd AyoGramDesktop-Tauri
+git clone https://github.com/biramentv-ux/dyrakDGram-Tauri.git
+cd dyrakDGram-Tauri
 
 # Изпълни бързи скрипт — инсталира всичко автоматично:
 Set-ExecutionPolicy -Scope Process -Bypass
@@ -40,7 +40,7 @@ Set-ExecutionPolicy -Scope Process -Bypass
 ```
 
 🎉 Това ще инсталира Node.js 20, Rust stable, pnpm, компилира frontend и Rust backend
-и създаде portable папка в `release/AyoGramDesktop_Portable/`.
+и създаде portable папка в `release/dyrakDGram_Portable/`.
 
 ---
 
@@ -51,8 +51,8 @@ Set-ExecutionPolicy -Scope Process -Bypass
 .\build-tauri.ps1 -PortableOnly
 ```
 
-📁 **Резултат:** `release/AyoGramDesktop_Portable/` съдържа:
-- `AyoGramDesktop.exe` — само приложението (portable)
+📁 **Резултат:** `release/dyrakDGram_Portable/` съдържа:
+- `dyrakDGram.exe` — само приложението (portable)
 - `*.msi` — опционален инсталатор за традиционна инсталация
 - `ayu_settings.json` — потребителски настройки
 
@@ -60,7 +60,7 @@ Set-ExecutionPolicy -Scope Process -Bypass
 
 ## 🧩 Плъгин Архитектура
 
-AyoGram поддържа истинска, расширяема плъгин система на Rust/C++. 
+dyrakDGram поддържа истинска, расширяема плъгин система на Rust/C++. 
 Всеки плъгин е отделна crate с собствена `Cargo.toml`, но се компилира и линква с основното приложение.
 
 ### Съществуващи Плъгини:
@@ -159,7 +159,7 @@ cd src-tauri && cargo tauri dev
 ## 📁 Структура на Проектa
 
 ```
-AyoGramDesktop/
+dyrakDGram/
 ├─ src-tauri/              # Tauri backend + Rust код
 │  ├─ src/main.rs          # Tauri entry, system-tray, commands
 │  ├─ Cargo.toml           # Backend dependencies
@@ -217,6 +217,6 @@ AyoGramDesktop/
 ---
 
 <div align="center">
-  <strong>AyoGram Desktop Hybrid</strong> — Telegram, който работи за теб.<br>
+  <strong>dyrakDGram</strong> — Telegram, който работи за теб.<br>
   Сделан с ❤️ от <a href="https://github.com/biramentv-ux">biramentv-ux</a>
 </div>

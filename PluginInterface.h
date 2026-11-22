@@ -18,5 +18,5 @@ public:
     virtual PluginInterface* createPlugin() = 0;
 };
 
-#define PluginInterface_iid "com.ayogram.plugin.interface/1.0"
+#define PluginInterface_iid "com.dyrak_dgram.plugin.interface/1.0"
 Q_DECLARE_INTERFACE(PluginInterface, PluginInterface_iid)

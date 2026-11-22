@@ -1,4 +1,4 @@
-# Makefile.ps1 - Унифициран build интерфейс за AyoGramDesktop Tauri
+# Makefile.ps1 - Унифициран build интерфейс за dyrakDGram Tauri
 
 param(
     [string]$Target = "help"

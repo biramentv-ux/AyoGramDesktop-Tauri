@@ -1,4 +1,4 @@
-# Пример добавка за CMakeLists.txt - Qt6 PluginInterface за хибрид AyoGramDesktop
+# Пример добавка за CMakeLists.txt - Qt6 PluginInterface за хибрид dyrakDGram
 # Добави в коренния CMakeLists.txt след add_subdirectory(core)
 
 set(CMAKE_PREFIX_PATH $ENV{CMAKE_PREFIX_PATH} CACHE PATH "Qt prefix" FORCE)

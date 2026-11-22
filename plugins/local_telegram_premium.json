@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "status_file": "",
+  "features": [
+    "2GB uploads",
+    "extended media library",
+    "priority service"
+  ]
+}

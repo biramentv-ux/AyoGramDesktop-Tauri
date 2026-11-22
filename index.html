@@ -3,40 +3,159 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AyoGramDesktop</title>
+<title>dyrakDGram</title>
 <style>
- body { font-family: Segoe UI, sans-serif; background:#0e0e0e; color:#eee; margin:0; padding:20px; }
- h1 { color:#4fc3f7 }
- .card { background:#1e1e1e; padding:16px; border-radius:12px; margin:12px 0 }
- button { background:#4fc3f7; border:none; padding:8px 16px; border-radius:8px; color:#000; cursor:pointer }
+  * { box-sizing: border-box; }
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #2d333b;
+    --accent: #58c1f0;
+    --accent-dark: #3a9fd4;
+    --text: #e6edf3;
+    --muted: #8b949e;
+  }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+    background: radial-gradient(1200px 700px at 70% -10%, #16324a 0%, var(--bg) 60%);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 28px;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; }
+  header.brand { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .logo {
+    width: 56px; height: 56px; border-radius: 14px; flex: 0 0 auto;
+    background: linear-gradient(135deg, var(--accent) 0%, #2d7fa8 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; font-weight: 800; color: #06222f; letter-spacing: -1px;
+    box-shadow: 0 6px 24px rgba(88,193,240,.25);
+  }
+  h1 { font-size: 28px; margin: 0; letter-spacing: .3px; }
+  header.brand p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 18px; margin: 0;
+  }
+  .card h2 { font-size: 17px; margin: 0 0 6px; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+  .card p.hint { color: var(--muted); font-size: 12px; margin: 0 0 14px; line-height: 1.5; }
+  .toggles { display: flex; flex-direction: column; gap: 10px; }
+  .pill-btn {
+    appearance: none; border: 1px solid var(--border); background: #21262d; color: var(--text);
+    border-radius: 10px; padding: 12px 14px; cursor: pointer; font-size: 13px; text-align: left;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px; transition: .15s;
+  }
+  .pill-btn:hover { border-color: var(--accent); background: #262c33; }
+  .pill-btn .state { font-size: 11px; padding: 3px 10px; border-radius: 999px; background: #0d1117; color: var(--muted); white-space: nowrap; }
+  .pill-btn.on { border-color: var(--accent); box-shadow: 0 0 0 1px rgba(88,193,240,.35) inset; }
+  .pill-btn.on .state { color: #06222f; background: var(--accent); font-weight: 700; }
+  .status-box {
+    margin-top: 14px; padding: 12px; border-radius: 10px; background: #0d1117;
+    border: 1px dashed var(--border); font-family: Consolas, monospace; font-size: 11px;
+    color: #9fe8b2; white-space: pre-wrap; word-break: break-word; min-height: 42px;
+  }
+  footer { margin-top: 22px; text-align: center; color: var(--muted); font-size: 11px; line-height: 1.7; }
+  .brand-badge { display:inline-block; padding:2px 10px; border-radius:999px; border:1px solid var(--border); color:var(--accent); font-size:11px; margin-left:8px; vertical-align: middle;}
 </style>
 </head>
 <body>
-<h1>AyoGram Desktop Hybrid</h1>
-<div class="card">
-<h2>Ghost Mode</h2>
-<div id="ghost"></div>
-<button onclick="toggleGhost('invisible_typing')">Toggle Invisible Typing</button>
-<button onclick="toggleGhost('hide_read_receipts')">Toggle Read Receipts</button>
-</div>
-<div class="card">
-<h2>Stream Mode</h2>
-<div id="stream"></div>
-</div>
-<script src="https://unpkg.com/@tauri-apps/api@^1/dist/tauri.js"></script>
-<script>
-async function refresh(){
- const ghost = await window.__TAURI__.invoke('get_ghost_mode');
- document.getElementById('ghost').innerText = JSON.stringify(ghost);
- const stream = await window.__TAURI__.invoke('get_stream_mode');
- document.getElementById('stream').innerText = JSON.stringify(stream);
-}
-async function toggleGhost(key){
- await window.__TAURI__.invoke('toggle_ghost_mode', { key });
- refresh();
-}
-refresh();
-setInterval(refresh, 2000);
-</script>
+  <div class="wrap">
+    <header class="brand">
+      <div class="logo">dG</div>
+      <div>
+        <h1>dyrakDGram <span class="brand-badge">v2.0.0</span></h1>
+        <p>Български портативен Telegram клиент — свой бранд върху оригиналния Telegram</p>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card" aria-labelledby="ghost-title">
+        <h2 id="ghost-title">👻 Прикрит режим</h2>
+        <p class="hint">Локални настройки на клиента (не променят реалния Telegram).</p>
+        <div class="toggles">
+          <button id="btn-invisible" class="pill-btn" type="button" onclick="toggleGhost('invisible_typing')">
+            <span>Невидимо въвеждане</span><span class="state" id="st-invisible">—</span>
+          </button>
+          <button id="btn-receipts" class="pill-btn" type="button" onclick="toggleGhost('hide_read_receipts')">
+            <span>Скриване на отметки за прочитане</span><span class="state" id="st-receipts">—</span>
+          </button>
+        </div>
+        <div class="status-box" id="ghost-status">Зареждане…</div>
+      </section>
+
+      <section class="card" aria-labelledby="stream-title">
+        <h2 id="stream-title">🎬 Потоков режим</h2>
+        <p class="hint">Локална настройка за видеопотока на клиента.</p>
+        <div class="toggles">
+          <button id="btn-stream" class="pill-btn" type="button" onclick="toggleStream()">
+            <span>Включване / изключване</span><span class="state" id="st-stream">—</span>
+          </button>
+        </div>
+        <div class="status-box" id="stream-status">Зареждане…</div>
+      </section>
+    </main>
+
+    <footer>
+      dyrakDGram &nbsp;·&nbsp; български интерфейс &nbsp;·&nbsp; портативно изпълнение<br/>
+      Изградено върху оригинала на Telegram — с локални плагини за разширяване функционалността.
+    </footer>
+  </div>
+
+  <script>
+    const invoke = (cmd, args) => {
+      if (window.__TAURI__ && window.__TAURI__.invoke) {
+        return window.__TAURI__.invoke(cmd, args || {});
+      }
+      // Браузър-предварителен режим: симулация за разглеждане на UI-то
+      return Promise.reject(new Error('Не в режим на приложение'));
+    };
+
+    const fmt = v => JSON.stringify(v, null, 1);
+
+    async function refreshGhost() {
+      try {
+        const g = await invoke('get_ghost_mode');
+        document.getElementById('ghost-status').textContent = fmt(g);
+        const b1 = document.getElementById('btn-invisible');
+        const b2 = document.getElementById('btn-receipts');
+        b1.classList.toggle('on', !!g.invisible_typing);
+        b2.classList.toggle('on', !!g.hide_read_receipts);
+        document.getElementById('st-invisible').textContent = g.invisible_typing ? 'ВКЛ' : 'ИЗКЛ';
+        document.getElementById('st-receipts').textContent = g.hide_read_receipts ? 'ВКЛ' : 'ИЗКЛ';
+      } catch (e) {
+        document.getElementById('ghost-status').textContent = 'Не е достъпно в този режим (нужен е изпълнимата Tauri версия).';
+      }
+    }
+
+    async function refreshStream() {
+      try {
+        const s = await invoke('get_stream_mode');
+        document.getElementById('stream-status').textContent = fmt(s);
+        const b = document.getElementById('btn-stream');
+        b.classList.toggle('on', !!s.enabled);
+        document.getElementById('st-stream').textContent = s.enabled ? 'ВКЛ' : 'ИЗКЛ';
+      } catch (e) {
+        document.getElementById('stream-status').textContent = 'Не е достъпно в този режим (нужен е изпълнимата Tauri версия).';
+      }
+    }
+
+    async function toggleGhost(key) {
+      try { await invoke('toggle_ghost_mode', { key }); } catch (e) {}
+      refreshGhost();
+    }
+
+    async function toggleStream() {
+      try { await invoke('toggle_stream_mode'); } catch (e) {}
+      refreshStream();
+    }
+
+    refreshGhost();
+    refreshStream();
+    setInterval(refreshGhost, 2000);
+    setInterval(refreshStream, 2000);
+  </script>
 </body>
 </html>

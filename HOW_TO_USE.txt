@@ -1,4 +1,4 @@
-AyoGramDesktop - Как да стартираш
+dyrakDGram - Как да стартираш
 
 1. Разпакетирай архива
 2. Двойно кликни BUILD_AND_RUN.bat

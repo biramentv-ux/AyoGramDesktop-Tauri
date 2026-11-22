@@ -1,8 +1,8 @@
-# Старт на разработка - AyoGram Desktop Hybrid
+# Старт на разработка - dyrakDGram
 
 ## Създаден проект
 
-Проектът е хибрид между AyoGram и exDekstop с:
+Проектът е хибрид между dyrakDGram и exDekstop с:
 - Desktop Windows клиент
 - Portable версия (без инсталация)
 - Без Android emulator
@@ -40,7 +40,7 @@
 
 ## Portable структура
 
-AyoGramDesktopHybrid_Portable/
+dyrakDGramHybrid_Portable/
 ├── exe
 ├── plugins/
 ├── translations/

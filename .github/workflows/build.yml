@@ -49,7 +49,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: AyoGramDesktop-${{ matrix.os }}
+          name: dyrakDGram-${{ matrix.os }}
           path: |
-          target/release/ayogram_desktop.exe
+          target/release/dyrak_dgram.exe
           target/release/bundle/nsis/*.exe

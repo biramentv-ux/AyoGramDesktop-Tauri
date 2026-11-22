@@ -1,7 +1,7 @@
 @echo off
 
 REM Portable packaging for Windows
-set APP_NAME=AyoGramDesktop
+set APP_NAME=dyrakDGram
 set BUILD_DIR=Release
 set OUTPUT_DIR=%APP_NAME%_Portable
 

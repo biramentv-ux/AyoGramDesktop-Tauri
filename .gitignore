@@ -49,3 +49,9 @@ build_cfg.txt
 *.tgz
 *.lnk
 .gitconfig
+
+# Python plugin runtime artifacts
+plugins/__pycache__/
+*.pyc
+dyrakDGram/
+unsloth-tmp/

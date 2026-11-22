@@ -21,7 +21,7 @@ serde_json = "1"
 members = ["../ghost_mode", "../stream_mode"]
 
 [package.metadata.tauri.build]
-before_build_command = "pnpm build"
+before_build_command = "npm run build"
 
 [[bin]]
 name = "ayogram_desktop"

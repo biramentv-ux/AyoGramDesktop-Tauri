@@ -20,26 +20,23 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
-
-      - name: Install pnpm v8 (stable)
-        run: npm install -g pnpm@^8.15.0
 
       - name: Verify toolchains
         run: |
           node --version
           npm --version
-          pnpm --version
           cargo --version
           rustc --version
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Build frontend
-        run: pnpm build
+        run: npm run build
 
       - name: Build Tauri
         uses: tauri-apps/tauri-action@v0

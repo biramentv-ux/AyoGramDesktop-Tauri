@@ -22,15 +22,21 @@ jobs:
           node-version: 20
 
       - name: Setup Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
+        uses: dtolnay/rust-toolchain@stable
 
-      - name: Install pnpm
-        run: npm install -g pnpm@8.15.9
+      - name: Install pnpm v8 (stable)
+        run: npm install -g pnpm@^8.15.0
+
+      - name: Verify toolchains
+        run: |
+          node --version
+          npm --version
+          pnpm --version
+          cargo --version
+          rustc --version
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build frontend
         run: pnpm build

@@ -24,7 +24,14 @@ serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 
 [workspace]
-members = ["ghost_mode", "stream_mode", "src-tauri/plugins/fuck_payments", "src-tauri/plugins/local_premium", "src-tauri/plugins/unlock_stars"]
+members = [
+  "ghost_mode",
+  "stream_mode",
+  "src-tauri/plugins/fuck_payments",
+  "src-tauri/plugins/local_premium",
+  "src-tauri/plugins/unlock_stars",
+  "plugins/SpotifyDownloaderPlugin"
+]
 
 [package.metadata.tauri.build]
 before_build_command = "npm run build"

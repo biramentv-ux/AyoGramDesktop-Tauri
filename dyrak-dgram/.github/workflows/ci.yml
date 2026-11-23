@@ -1,183 +1,143 @@
-name: dyrakDGram CI/CD Pipeline
+name: CI/CD Pipeline - dyrakDGram
 
 on:
   push:
     branches:
       - main
-      - feature/*
+      - 'feature/**'
+      - 'mobile/**'
   pull_request:
     branches:
       - main
 
 jobs:
-  desktop-build:
-    name: Desktop Build (Windows/macOS/Linux)
-    runs-on: ${{ matrix.os }}
-    
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [20]
-    
+  # Desktop build jobs
+  build-desktop-linux:
+    name: Build Linux Desktop
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      
+      - uses: actions/checkout@v4
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
-        with:
-          components: rustfmt, clippy
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-          cache-dependency-path: web/package-lock.json
-      
       - name: Install dependencies
         run: |
-          cd dyrak-dgram/web
-          npm ci || npm install
-      
-      - name: Build desktop app
+          sudo apt-get update
+          sudo apt-get install -y libudev-dev libxcb-randr0-dev libxdo-dev libxtst-dev libcairo2-dev libpango1.0-dev libfreetype-dev libfontconfig1-dev
+      - name: Build app
         run: |
-          cd dyrak-dgram/src-tauri
-          cargo tauri build
-      
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dyrak-dgram-${{ matrix.os }}-build
-          path: |
-            dyrak-dgram/src-tauri/target/release/*.exe
-            dyrak-dgram/src-tauri/target/release/*.dmg
-            dyrak-dgram/src-tauri/target/release/*.AppImage
-          retention-days: 5
+          cd src-tauri
+          cargo build --release
+      - name: Build Tauri app
+        run: |
+          npm ci
+          npm run tauri build
 
-  mobile-build:
-    name: Mobile Build (Android/iOS)
-    runs-on: ubuntu-latest
-    
+  build-desktop-windows:
+    name: Build Windows Desktop
+    runs-on: windows-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      
+      - uses: actions/checkout@v4
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
+      - name: Install dependencies
+        run: cargo build --release --manifest-path src-tauri/Cargo.toml
+      - name: Build Tauri app
+        run: |
+          npm ci
+          npm run tauri build
+
+  build-desktop-macos:
+    name: Build macOS Desktop
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Install dependencies
+        run: |
+          brew install llvm
+          cargo build --release --manifest-path src-tauri/Cargo.toml
+      - name: Build Tauri app
+        run: |
+          npm ci
+          npm run tauri build
+
+  # Mobile build jobs
+  build-android:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
-          components: rustfmt, clippy
-      
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-        with:
-          sdk-path: ${{ vars.ANDROID_SDK_PATH || '/opt/android-sdk' }}
-      
+          distribution: 'temurin'
+          java-version: 17
+      - name: Install Android SDK
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake pkg-config libssl-dev
+      - name: Build Android app
+        run: |
+          npm ci
+          npm run tauri android build
+
+  build-ios:
+    name: Build iOS IPA
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Install dependencies
+        run: |
+          brew install llvm
+          cargo build --release --manifest-path src-tauri/Cargo.toml
+      - name: Build iOS app
+        run: |
+          npm ci
+          npm run tauri ios build
+
+  # Web deployment job
+  deploy-web:
+    name: Deploy to GitHub Pages
+    needs: [build-desktop-linux, build-android, build-ios]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: web/package-lock.json
-      
-      - name: Install mobile dependencies
-        run: |
-          cd dyrak-dgram/web
-          npm ci || npm install
-      
-      - name: Configure Android build
-        run: |
-          export ANDROID_SDK_ROOT=$ANDROID_HOME
-          export PATH=$PATH:$ANDROID_HOME/tools/bin
-          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
-      
-      - name: Build mobile app (Android)
-        run: |
-          cd dyrak-dgram/src-tauri
-          cargo tauri android init
-          ls -la target/android/ 2>/dev/null || echo "Android target created"
-      
-      - name: Test mobile build
-        run: |
-          echo "Mobile build configuration verified!"
-          echo "Platforms: Android, iOS (Tauri Mobile)"
-          echo "Web: PWA ready with personal domain"
-
-  web-deploy:
-    name: Deploy Web to GitHub Pages
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: web/package-lock.json
-      
       - name: Install dependencies
-        run: |
-          cd web
-          npm ci || npm install
-      
+        run: npm ci
       - name: Build website
-        run: |
-          cd web
-          npm run build || echo "Using static files"
-      
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v4
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          name: github-pages
-          path: web
-          retention-days: 5
-      
+        run: npm run build
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          artifact-name: github-pages
-      
-      - name: Report success
-        run: |
-          echo "Website deployed successfully!"
-          echo "View your site: ${{ steps.deployment.outputs.page_url }}"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web
+          force_orphan: true
 
+  # Release job
   release:
-    name: Create GitHub Release
-    needs: [desktop-build, mobile-build, web-deploy]
+    name: Create Release
+    needs: [build-desktop-linux, build-desktop-windows, build-desktop-macos]
     runs-on: ubuntu-latest
-    
     if: startsWith(github.ref, 'refs/tags/')
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-          pattern: dyrak-dgram-*-build
-      
-      - name: List artifacts
-        run: |
-          ls -la artifacts/
-          find artifacts -type f -name "*.exe" -o -name "*.dmg" -o -name "*.AppImage" | head -10
-      
+      - uses: actions/checkout@v4
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        id: create_release
+        uses: actions/create-release@v4
         with:
-          files: |
-            artifacts/dyrak-dgram-ubuntu-latest-build/*.exe
-            artifacts/dyrak-dgram-windows-latest-build/*.dmg
-            artifacts/dyrak-dgram-macos-latest-build/*.AppImage
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
           draft: false
-          prerelease: true
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

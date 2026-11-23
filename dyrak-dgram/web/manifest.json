@@ -1,7 +1,7 @@
 {
   "name": "dyrakDGram",
   "short_name": "dyrakDGram",
-  "description": "\u0411\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438 Telegram \u043a\u043b\u0438\u0435\u043d\u0442 \u0441 \u043f\u043b\u044a\u0433\u0438\u043d\u0438 \u0438 \u0440\u0430\u0437\u0448\u0438\u0440\u0435\u043d\u0430 \u0444\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b\u043d\u043e\u0441\u0442",
+  "description": "Български Telegram клиент с плъгини и разширена функционалност за Android/iOS",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#17212b",
@@ -16,6 +16,19 @@
       "src": "https://dyrak-dgram.github.io/images/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Open dyrakDGram",
+      "short_name": "dyrakDGram",
+      "description": "Отваряне на основното приложение",
+      "url": "/index.html",
+      "icons": [
+        {
+          "src": "/images/icon-192x192.png"
+        }
+      ]
     }
   ]
 }

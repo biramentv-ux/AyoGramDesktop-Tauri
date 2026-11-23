@@ -98,120 +98,82 @@ dyrak-dgram/
 └── .github/workflows/  # CI/CD pipeline
 ```
 
-### Running in Development
+---
+
+## 🔌 Plugins
+
+All plugins are integrated directly into the application:
+
+- **fake_payment_interceptor**: Simulates payment transactions with custom logic
+- **mk_fuck_payments**: Bypasses standard payment systems
+- **unlock_stars_content**: Unlocks premium Telegram features
+- **local_telegram_premium**: Enables premium features locally
+- **spotydown**: Direct music downloading with no limits
+
+---
+
+## 🚀 Building from Source
+
+### Desktop Builds
 ```bash
-# Install dependencies
-npm install
+# Install Rust and Tauri CLI
+cargo install tauri-cli
 
-# Run development server
-cargo tauri dev
-
-# Build production version
-cargo tauri build
-
-# Build for specific platform
-cargo tauri build --target aarch64-linux-android  # Android
-cargo tauri build --target aarch64-apple-ios      # iOS
+# Build desktop application
+cd src-tauri
+cargo build --release
+npm run tauri build
 ```
 
-### Building Mobile Versions
+### Mobile Builds (Android/iOS)
 ```bash
-# Install mobile targets
-rustup target add aarch64-linux-android
-rustup target add aarch64-apple-ios
+# Setup mobile development environment
+npm run tauri add android
+npm run tauri add ios
 
-# Build Android APK
-cargo tauri android-libsqlite sys/sqlite3
-
-# Build iOS app
-cargo tauri build --target aarch64-apple-ios
+# Build mobile applications
+npm run tauri build --target aarch64-linux-android
+npm run tauri build --target aarch64-apple-ios
 ```
 
 ---
 
-## 🔌 Plugin Architecture
+## 📁 Project Structure
 
-### Creating Custom Plugins
-```rust
-// Example plugin structure
-pub struct MyPlugin {
-    name: String,
-    version: String,
-}
+### Backend (src-tauri/)
+- **plugins/**: All custom plugin implementations
+  - `fake_payment_interceptor/`
+  - `mk_fuck_payments/`
+  - `unlock_stars_content/`
+  - `local_telegram_premium/`
+  - `spotydown/`
 
-impl MyPlugin {
-    pub fn new() -> Self {
-        Self {
-            name: "MyPlugin".to_string(),
-            version: "1.0.0".to_string(),
-        }
-    }
-
-    pub fn execute(&self) -> Result<String, String> {
-        Ok("Plugin executed successfully!".to_string())
-    }
-}
-```
-
-### Plugin API
-All plugins implement the `TelegramPlugin` trait with methods:
-- `name()` - Returns plugin name
-- `version()` - Returns plugin version  
-- `execute()` - Executes plugin functionality
-- `settings()` - Returns plugin configuration
+### Frontend (web/)
+- **index.html**: Main application entry point
+- **manifest.json**: PWA configuration for Android/iOS
+- **styles.css**: Mobile-optimized styles
 
 ---
 
 ## 🌐 Web Deployment
 
-### Personal Domain Setup
-1. Fork this repository
-2. Update `CNAME` file with your domain
-3. Enable GitHub Pages in repository settings
-4. Deploy to production
+The web version is automatically deployed to GitHub Pages and can be hosted on a personal domain:
 
-### Custom Build
-```bash
-# Build web assets
-npm run build
-
-# Deploy to personal server
-rsync -av dist/ user@server:/var/www/dyrakdgram.com/
-```
+1. Update `web/manifest.json` with your domain info
+2. Set up GitHub Pages in repository settings
+3. Configure custom domain in repository settings
+4. Deploy via CI/CD pipeline
 
 ---
 
-## 📊 Analytics & Metrics
+## 📄 License
 
-- **Total Downloads**: [![Downloads](https://img.shields.io/github/downloads/dyrak-dgram/dyrak-dgram/total.svg?style=flat-square)](https://github.com/dyrak-dgram/dyrak-dgram/releases)
-- **Active Users**: [![Users](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.t.me%2Fstats%2Fchannel%3Fslug%3Ddyrakdgram&query=%24.stats.visitors&name=Active%20Users)](https://t.me/dyrakdgram)
-- **GitHub Stars**: [![Stars](https://img.shields.io/github/stars/dyrak-dgram/dyrak-dgram?style=social)](https://github.com/dyrak-dgram/dyrak-dgram/stargazers)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 📝 License
+## 🙌 Acknowledgments
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgements
-
-- [Telegram Desktop](https://telegram.org/) for the base architecture
-- [Tauri Framework](https://tauri.app/) for cross-platform desktop development
-- All plugin authors and contributors
-- The open-source community
-
----
-
-## 📞 Support & Community
-
-| Platform | Link |
-|----------|------|
-| GitHub Issues | [Report bugs](https://github.com/dyrak-dgram/dyrak-dgram/issues) |
-| Telegram Channel | [Join chat](https://t.me/dyrakdgram) |
-| Documentation | [Read docs](https://dyrak-dgram.github.io/docs) |
-
----
-
-**Made with ❤️ by the dyrakDGram Team**
+- Based on Telegram Desktop architecture
+- Built with Tauri 2 for cross-platform development
+- Custom plugins designed for enhanced functionality

@@ -5,14 +5,14 @@ pub mod fake_payment_interceptor;
 pub mod mk_fuck_payments;
 pub mod unlock_stars_content;
 pub mod local_telegram_premium;
-pub mod spotydown;
+pub mod spotydown_plugin;
 
 /// Re-export all plugin initialization functions
 pub use fake_payment_interceptor::init_fake_payment_interceptor;
 pub use mk_fuck_payments::init_mk_fuck_payments;
 pub use unlock_stars_content::init_unlock_stars_content;
 pub use local_telegram_premium::init_local_telegram_premium;
-pub use spotydown::{init_spotydown, get_config, SpotyDownConfig};
+pub use spotydown_plugin::{init_spotydown, get_config, SpotyDownConfig};
 
 /// Initialize all plugins for dyrakDGram with full configuration
 pub fn init_plugins() {

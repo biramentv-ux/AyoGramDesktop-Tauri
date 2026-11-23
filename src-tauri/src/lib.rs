@@ -1,18 +1,14 @@
 pub mod plugins;
 
-use tauri::Manager;
+use tauri::{Manager, App};
 
 /// Initialize all plugins for dyrakDGram
-pub fn init_plugins() {
+pub fn init_plugins(app: &mut App) {
     // Initialize plugin system
     println!("Initializing dyrakDGram plugins...");
     
-    // Each plugin is initialized in its own module
-    // FakePaymentInterceptorPlugin
-    // MKFuckPaymentsPlugin  
-    // UnlockStarsContentPlugin
-    // LocalTelegramPremiumPlugin
-    // SpotyDownPlugin (already implemented)
+    // Initialize each plugin
+    plugins::init_plugins(app);
 }
 
 /// Plugin registry for dyrakDGram

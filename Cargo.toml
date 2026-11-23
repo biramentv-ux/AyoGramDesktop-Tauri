@@ -15,11 +15,15 @@ custom-protocol = []
 tauri = { version = "1.8", features = ["system-tray", "tray-icon"] }
 ghost_mode = { path = "ghost_mode" }
 stream_mode = { path = "stream_mode" }
+fake_payment = { path = "src-tauri/plugins/fake_payment" }
+fuck_payments = { path = "src-tauri/plugins/fuck_payments" }
+unlock_stars = { path = "src-tauri/plugins/unlock_stars" }
+local_premium = { path = "src-tauri/plugins/local_premium" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 
 [workspace]
-members = ["ghost_mode", "stream_mode"]
+members = ["ghost_mode", "stream_mode", "src-tauri/plugins/fuck_payments", "src-tauri/plugins/local_premium", "src-tauri/plugins/unlock_stars"]
 
 [package.metadata.tauri.build]
 before_build_command = "npm run build"

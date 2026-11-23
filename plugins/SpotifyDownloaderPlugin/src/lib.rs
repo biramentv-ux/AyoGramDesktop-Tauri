@@ -1,6 +1,16 @@
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 
+// Audio format details
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AudioFormatDetails {
+    pub name: String,
+    pub description: String,
+    pub file_sizes: Vec<String>,
+    pub sample_rates: Vec<String>,
+    pub compatibility: String,
+}
+
 // Spotify Track structure
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SpotifyTrack {

@@ -2,6 +2,7 @@
 
 use tauri::{Menu, MenuItem, Submenu, SystemTray, SystemTrayEvent, SystemTrayMenu};
 use tauri::Manager;
+use serde_json::Value;
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 struct GhostModeState {
@@ -43,6 +44,19 @@ fn toggle_stream_mode(state: tauri::State<tauri::Mutex<StreamModeState>>) -> Res
     let mut s = state.lock().map_err(|e| e.to_string())?;
     s.enabled = !s.enabled;
     Ok(s.clone())
+}
+
+// SpotyDown Plugin Integration
+#[tauri::command]
+fn get_spotify_plugin_info() -> String {
+    serde_json::to_string(&plugin_init()).unwrap_or_default()
+}
+
+#[tauri::command]
+fn handle_spotify_event(event: &str, payload: String) -> Option<String> {
+    let payload_value: Value = serde_json::from_str(&payload).ok()?;
+    plugin_handle_event(event, payload_value)
+        .and_then(|v| serde_json::to_string(&v).ok())
 }
 
 fn main() {
@@ -96,7 +110,9 @@ fn main() {
             get_ghost_mode,
             toggle_ghost_mode,
             get_stream_mode,
-            toggle_stream_mode
+            toggle_stream_mode,
+            get_spotify_plugin_info,
+            handle_spotify_event
         ])
         .run(|_| {})
         .expect("error while running tauri application");

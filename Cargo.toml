@@ -1,8 +1,8 @@
 [package]
 name = "dyrak_dgram"
-version = "2.0.0"
+version = "2.1.0"
 edition = "2021"
-description = "Портативен Telegram клиент с български интерфейс, изграден върху оригинален Telegram"
+description = "Портативен Telegram клиент с български интерфейс и SpotyDown плъгин за Spotify, изграден върху оригинален Telegram"
 
 [build-dependencies]
 tauri-build = "1"
@@ -18,6 +18,7 @@ stream_mode = { path = "stream_mode" }
 fake_payment = { path = "src-tauri/plugins/fake_payment" }
 fuck_payments = { path = "src-tauri/plugins/fuck_payments" }
 unlock_stars = { path = "src-tauri/plugins/unlock_stars" }
+spotify_downloader = { path = "plugins/SpotifyDownloaderPlugin" }
 local_premium = { path = "src-tauri/plugins/local_premium" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"

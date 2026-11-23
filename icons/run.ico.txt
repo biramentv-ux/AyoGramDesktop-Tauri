@@ -1,6 +1,0 @@
-Placeholder за иконка
-За да имаш иконки на RUN.bat и BUILD_AND_RUN.bat:
-1. Сложи файл run.ico в папка icons/
-2. Десен клик на RUN.bat -> Properties -> Change Icon -> избери icons\run.ico
-
-Можеш да генерираш проста иконка с онлайн генератор и да я поставиш тук.

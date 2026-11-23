@@ -1,8 +1,0 @@
-{
-  "name": "MK_FuckPayments",
-  "version": "2.0.0",
-  "author": "dyrakDGram",
-  "architecture": "python-stdlib",
-  "entry": "mk_fuckpayments.py",
-  "description": "Санитира плащания Stars и показва фалшиви звезди; записва събитията в лога"
-}

@@ -1,8 +1,0 @@
-{
-  "name": "DownloaderMachine",
-  "version": "2.0.0",
-  "author": "dyrakDGram",
-  "architecture": "python-stdlib",
-  "entry": "downloader_machine.py",
-  "description": "Подготвя изтегляния от Spotify и верифицира manifestа повторно (checksum + структура)"
-}

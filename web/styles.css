@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #17212b;
+    color: white;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #233e52;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.brand-logo {
+    width: 40px;
+    height: 40px;
+    background-color: #64b5f6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.plugin-card {
+    background-color: #233e52;
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.2s;
+}
+
+.plugin-card:hover {
+    transform: translateY(-5px);
+}
+
+.plugin-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.plugin-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.plugin-name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.plugin-desc {
+    color: #8d9bc4;
+    margin-bottom: 15px;
+}
+
+.btn {
+    background-color: #64b5f6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #5aa1e0;
+}
+
+.action-area {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #17212b;
+    border-radius: 6px;
+}
+
+input[type="number"], input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 6px;
+    border: 1px solid #374b60;
+    background-color: #233e52;
+    color: white;
+}
+
+.status {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #374b60;
+}
+
+.success {
+    background-color: #2d5a3e;
+    color: #8fbc8f;
+}
+
+.error {
+    background-color: #6b2424;
+    color: #bb6b6b;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    color: #8d9bc4;
+}
+
+footer a {
+    color: #64b5f6;
+    text-decoration: none;
+}

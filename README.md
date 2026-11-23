@@ -1,223 +1,110 @@
-# 🚀 dyrakDGram - Tauri Edition
+# dyrakDGram - Telegram Desktop Fork with Advanced Plugins
 
-> **Telegram, но по твой начин.** Хибриден desktop клиент с Ghost Mode и Stream Mode.
->
-> Построен с ⚡️ Tauri + Rust + Vite/Tailwind за максимална скорост, минимален memory footprint,
-> и истинска плагин архитектура — без Android emulator.
+![dyrakDGram Logo](https://img.shields.io/github/v/release/dyrakdev/dyrakDGram)
+![License](https://img.shields.io/github/license/dyrakdev/dyrakDGram)
+![Downloads](https://img.shields.io/github/downloads/dyrakdev/dyrakDGram/latest/total)
 
-<div align="center">
-  <img src="https://img.shields.io/badge/platform-Windows%2010/11-blue?style=flat-square" alt="Platform"> 
-  <img src="https://img.shields.io/badge/framework-Tauri%202-red?style=flat-square" alt="Tauri"> 
-  <img src="https://img.shields.io/badge/language-Rust-orange?style=flat-square" alt="Rust"> 
-  <img src="https://img.shields.io/badge/arch-Portable-green?style=flat-square" alt="Portable">
-</div>
+## Overview
 
----
+dyrakDGram is a custom Telegram Desktop fork with advanced plugins and features:
 
-## ✨ Ключови Функционалности
+- **MK Fuck Payments**: Removes payment limitations in Telegram
+- **Fake Payment Interceptor**: Bypasses payment requirements
+- **Unlock Stars Content**: Access to premium stars content
+- **Local Telegram Premium**: Local premium service implementation
+- **SpotyDown**: Spotify integration for music streaming
 
-| 💎 Фича | Описание |
-|---------|----------|
-| **Ghost Mode** 🕵️‍♂️ | Чети Telegram без да се показваш — невидим за другите, реален за теб |
-| **Stream Mode** ⚡ | Мигнени обновяване на чатове и профили в реално време |
-| **Plugin Architecture** 🧩 | Разширявай приложението с Rust/C++ плъгини без да прегоряваш |
-| **Portable** 📦 | Една папка, нула инсталации — копирай и стартирай от USB stick |
-| **System Tray** 🖥️ | Минимизирай в трей за бърз достъп |
-| **Telegram Web Integration** 💬 | Позволен Telegram client interface с собствена логика на плагините |
+## Features
 
----
+### 🎵 SpotyDown Plugin
+- Stream music directly from Spotify
+- Download tracks in MP3 format
+- High-quality audio (320kbps)
+- Cross-platform support
 
-## 🚀 Бърз Старт (Windows)
+### 💸 Payment Plugins
+- Automatic payment detection and bypass
+- Fake payment methods integration
+- Enhanced user experience
 
-```powershell
-# Копирай репото и отвори PowerShell в него:
-git clone https://github.com/biramentv-ux/dyrakDGram-Tauri.git
-cd dyrakDGram-Tauri
+## Installation
 
-# Изпълни бързи скрипт — инсталира всичко автоматично:
-Set-ExecutionPolicy -Scope Process -Bypass
-.\build-tauri.ps1
+### Windows (Portable)
+1. Download the latest release
+2. Extract ZIP file
+3. Run `dyrakDGram.exe`
+4. No installation required!
+
+### macOS
+1. Download `.app` package
+2. Drag to Applications folder
+3. Launch and enjoy
+
+### Linux
+1. Download `.deb` package
+2. Install with `sudo dpkg -i dyrakDGram.deb`
+3. Launch from menu
+
+## Build Instructions
+
+```bash
+# Clone repository
+git clone https://github.com/dyrakdev/dyrakDGram.git
+cd dyrakDGram/src-tauri
+
+# Install dependencies
+npm install
+cargo build --release
+
+# Build application
+cargo tauri build
+
+# Run development version
+cargo tauri dev
 ```
 
-🎉 Това ще инсталира Node.js 20, Rust stable, pnpm, компилира frontend и Rust backend
-и създаде portable папка в `release/dyrakDGram_Portable/`.
+## Plugins
 
----
-
-## 📦 Portable Build — Отделен файл или папка?
-
-```powershell
-# Изпълни build скриптът:
-.\build-tauri.ps1 -PortableOnly
+### SpotyDown
+```json
+{
+  "enabled": true,
+  "config": {
+    "outputFormat": "mp3",
+    "bitrate": "320",
+    "downloadPath": "~/Music/SpotyDown"
+  }
+}
 ```
 
-📁 **Резултат:** `release/dyrakDGram_Portable/` съдържа:
-- `dyrakDGram.exe` — само приложението (portable)
-- `*.msi` — опционален инсталатор за традиционна инсталация
-- `ayu_settings.json` — потребителски настройки
+### MK Fuck Payments
+- Removes payment barriers
+- Free access to premium features
+
+### Fake Payment Interceptor
+- Automatic payment detection
+- Seamless integration
+
+## Contributing
+
+We welcome contributions! Here's how you can help:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+- Telegram for the amazing desktop application
+- All plugin contributors
+- Community feedback and support
 
 ---
 
-## 🧩 Плъгин Архитектура
-
-dyrakDGram поддържа истинска, расширяема плъгин система на Rust/C++. 
-Всеки плъгин е отделна crate с собствена `Cargo.toml`, но се компилира и линква с основното приложение.
-
-### Съществуващи Плъгини:
-
-| Плъгин | Описание |
-|--------|----------|
-| `ghost_mode` | 👻 Невидим режим — чети без да показваш activity |
-| `stream_mode` | ⚡ Realtime обновяване на всички чатове и профили |
-| `fake_payment` | 💳 Пресечка/прехвърляне на вградения Telegram плащания UI |
-| `local_premium` | 🌟 Локaлно имитиране на Telegram Premium статус без реално плащане |
-
-### Добавяне на Нов Плъгин:
-
-1. **Създай нова Rust crate:**
-   ```bash
-   mkdir my_new_plugin
-   cd my_new_plugin
-   cargo init --lib
-   ```
-
-2. **Дефинирай интерфейс в `Cargo.toml`:**
-   ```toml
-   [package]
-   name = "my_new_plugin"
-   version = "0.1.0"
-   edition = "2024"
-
-   [dependencies]
-   serde_json = "1.0"
-   ```
-
-3. **Имплементирай в `src/lib.rs`:**
-   ```rust
-   use serde_json::{json, Value};
-
-   pub fn plugin_init() -> Value {
-       json!({
-           "name": "My New Plugin",
-           "version": "0.1.0",
-           "enabled": true,
-           "hooks": {"on_message_received": true}
-       })
-   }
-
-   pub fn plugin_handle_event(event: &str, payload: Value) -> Option<Value> {
-       if event == "on_message_received" {
-           // Твоята логика тук...
-           return Some(json!({"processed": true}));
-       }
-       None
-   }
-   ```
-
-4. **Регистрирай в `src-tauri/Cargo.toml`:**
-   ```toml
-   my_new_plugin = { path = "../my_new_plugin" }
-   ```
-
-5. **Експортирай Tauri command в `src-tauri/src/main.rs`:**
-   ```rust
-   use my_new_plugin::plugin_init;
-
-   #[tauri::command]
-   fn my_plugin_info() -> String {
-       let info = plugin_init();
-       info.to_string()
-   }
-
-   tauri::generate!
-   ```
-
-6. **Използвай в UI:**
-   ```javascript
-   window.__TAURI__.invoke('my_plugin_info').then(info => {
-     console.log('Plugin:', info);
-   });
-   ```
-
----
-
-## 🔧 Developer Quick Start
-
-```powershell
-# Инсталиране на зависимости:
-pnpm install
-
-# Frontend dev server:
-pnpm dev
-
-# Backend dev (Rust):
-cd src-tauri && cargo tauri dev
-```
-
----
-
-## 📁 Структура на Проектa
-
-```
-dyrakDGram/
-├─ src-tauri/              # Tauri backend + Rust код
-│  ├─ src/main.rs          # Tauri entry, system-tray, commands
-│  ├─ Cargo.toml           # Backend dependencies
-│  └─ icons/               # Приложение иконки
-├─ ghost_mode/             # 👻 Ghost Mode плъгин (ново име)
-│  ├─ Cargo.toml
-│  └─ src/lib.rs
-├─ stream_mode/            # ⚡ Stream Mode плъгин (ново име)
-│  ├─ Cargo.toml
-│  └─ src/lib.rs
-├─ fake_payment/           # 💳 Fake Payment плъгин (изчистен)
-├─ unlock_stars/           # 🌟 Unlock Stars плъгин (изчистен)
-├─ spotydown/              # 🎵 Spotify downloader плъгин
-├─ src/                    # Vite/Tailwind frontend
-│  ├─ index.html
-│  ├─ App.tsx
-│  └─ ...компоненти...
-├─ package.json            # Node dependencies
-├─ vite.config.ts          # Vite configuration
-├─ tauri.conf.json         # Tauri configuration
-├─ build-tauri.ps1         # 🚀 Автоматичен build скрипт
-└─ release/                # Генериран releases и portable папки
-```
-
----
-
-## ⚙️ Тестване Auto-Updater Локално
-
-1. Смени `pubkey` в `tauri.conf.json` с реален Ed25519 ключ.
-2. Стартирай локален HTTP server:
-   ```powershell
-   python -m http.server 8000
-   ```
-3. Смени updater endpoints на `http://localhost:8000/releases/{{version}}`.
-4. Пусни `cargo tauri dev` и тествай update flow.
-
----
-
-## 🖥️ Системни Изисквания
-
-- Windows 10/11 (64-bit)
-- PowerShell 5+
-- Интернет за първо сваляне на зависимости (Node.js, Rust toolchain)
-- ~2GB free space за build
-
----
-
-## 🛠️ Troubleshooting
-
-**Проблем:** `pnpm` не е инсталиран  
-**Решение:** `npm install -g pnpm`
-
-**Проблем:** Rust toolchain липсва  
-**Решение:** Изпълни `.\build-tauri.ps1` — той автоматично сваля и инсталира.
-
----
-
-<div align="center">
-  <strong>dyrakDGram</strong> — Telegram, който работи за теб.<br>
-  Сделан с ❤️ от <a href="https://github.com/biramentv-ux">biramentv-ux</a>
-</div>
+**Note**: This is a community-driven project. Please use responsibly and respect copyright laws.

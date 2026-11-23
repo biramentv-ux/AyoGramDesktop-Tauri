@@ -1,41 +1,28 @@
 [package]
-name = "dyrak_dgram"
-version = "2.1.0"
-edition = "2021"
-description = "Портативен Telegram клиент с български интерфейс и SpotyDown плъгин за Spotify, изграден върху оригинален Telegram"
+name = "dyrak-dgram"
+version = "1.0.0"
+description = "dyrakDGram - Telegram Desktop with advanced plugins and SpotyDown integration"
+authors = ["Dyrak"]
+license = "MIT"
+repository = "https://github.com/dyrakdev/dyrakDGram"
+
+[lib]
+name = "dyrak_dgram_lib"
+crate-type = ["lib", "cdylib", "rlib"]
+
+[dependencies]
+tauri = { version = "1.8", features = ["api-all", "system-tray", "tray-icon"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+reqwest = { version = "0.11", features = ["json"] }
+tokio = { version = "1.0", features = ["full"] }
 
 [build-dependencies]
-tauri-build = "1"
+tauri-build = { version = "1.8" }
 
 [features]
 default = ["custom-protocol"]
 custom-protocol = []
 
-[dependencies]
-tauri = { version = "1.8", features = ["system-tray", "tray-icon"] }
-ghost_mode = { path = "ghost_mode" }
-stream_mode = { path = "stream_mode" }
-fake_payment = { path = "src-tauri/plugins/fake_payment" }
-fuck_payments = { path = "src-tauri/plugins/fuck_payments" }
-unlock_stars = { path = "src-tauri/plugins/unlock_stars" }
-spotydown = { path = "plugins/SpotifyDownloaderPlugin" }
-local_premium = { path = "src-tauri/plugins/local_premium" }
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
 
-[workspace]
-members = [
-  "ghost_mode",
-  "stream_mode",
-  "src-tauri/plugins/fuck_payments",
-  "src-tauri/plugins/local_premium",
-  "src-tauri/plugins/unlock_stars",
-  "plugins/SpotifyDownloaderPlugin"
-]
 
-[package.metadata.tauri.build]
-before_build_command = "npm run build"
-
-[[bin]]
-name = "dyrak_dgram"
-path = "src-tauri/src/main.rs"

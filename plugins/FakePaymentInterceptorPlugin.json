@@ -1,8 +1,0 @@
-{
-  "name": "FakePaymentInterceptor",
-  "version": "2.0.0",
-  "author": "dyrakDGram",
-  "architecture": "python-stdlib",
-  "entry": "fakepayment_interceptor.py",
-  "description": "Прихваща плащания Stars и връща фалшив TL_payments_paymentResult - без реално плащане"
-}

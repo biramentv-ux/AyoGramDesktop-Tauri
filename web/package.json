@@ -1,0 +1,24 @@
+{
+  "name": "dyrak-dgram-web",
+  "version": "1.0.0",
+  "description": "dyrakDGram web frontend with enhanced features",
+  "main": "js/main.js",
+  "scripts": {
+    "start": "npx serve -l 3000",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "telegram",
+    "desktop",
+    "music",
+    "spotify",
+    "premium"
+  ],
+  "author": "Dyrak",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^4.5.0",
+    "serve": "^14.2.0"
+  }
+}

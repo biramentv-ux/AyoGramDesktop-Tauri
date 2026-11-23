@@ -1,8 +1,0 @@
-{
-  "name": "LocalTelegramPremium",
-  "version": "2.0.0",
-  "author": "dyrakDGram",
-  "architecture": "python-stdlib",
-  "entry": "local_telegram_premium.py",
-  "description": "Локален Telegram Premium без абонамент: записва и проверява статус файла локально (local: true)"
-}

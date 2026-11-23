@@ -164,14 +164,14 @@ dyrakDGram/
 │  ├─ src/main.rs          # Tauri entry, system-tray, commands
 │  ├─ Cargo.toml           # Backend dependencies
 │  └─ icons/               # Приложение иконки
-├─ ghost_mode/             # 👻 Ghost Mode плъгин
+├─ ghost_mode/             # 👻 Ghost Mode плъгин (ново име)
 │  ├─ Cargo.toml
 │  └─ src/lib.rs
-├─ stream_mode/            # ⚡ Stream Mode плъгин
+├─ stream_mode/            # ⚡ Stream Mode плъгин (ново име)
 │  ├─ Cargo.toml
 │  └─ src/lib.rs
-├─ fake_payment/           # 💳 Fake Payment плъгин
-├─ unlock_stars/           # 🌟 Unlock Stars плъгин
+├─ fake_payment/           # 💳 Fake Payment плъгин (изчистен)
+├─ unlock_stars/           # 🌟 Unlock Stars плъгин (изчистен)
 ├─ spotydown/              # 🎵 Spotify downloader плъгин
 ├─ src/                    # Vite/Tailwind frontend
 │  ├─ index.html

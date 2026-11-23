@@ -1,6 +1,7 @@
 {
+  "$schema": "https://schema.tauri.dev/config-2.4",
   "name": "dyrakDGram",
-  "description": "\u0411\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438 Telegram \u043a\u043b\u0438\u0435\u043d\u0442 \u0441 \u043f\u043b\u044a\u0433\u0438\u043d\u0438 \u0438 \u0440\u0430\u0437\u0448\u0438\u0440\u0435\u043d\u0430 \u0444\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b\u043d\u043e\u0441\u0442",
+  "description": "Български Telegram клиент с плъгини и разширена функционалност",
   "version": "1.0.0",
   "icon": "icons/icon.png",
   "license": "MIT",
@@ -26,6 +27,38 @@
       "digestAlgorithm": "sha256",
       "timestamp": true,
       "tspUrl": "http://timestamp.digicert.com"
+    },
+    "macOS": {
+      "protocols": {
+        "name": "dyrakDGram",
+        "schemes": ["dyrakdgram"]
+      }
+    },
+    "iOS": {
+      "extends": "com.dyrakdgram.desktop",
+      "protocols": {
+        "name": "dyrakDGram",
+        "schemes": ["dyrakdgram"]
+      }
+    },
+    "android": {
+      "extends": "com.dyrakdgram.desktop",
+      "protocols": {
+        "name": "dyrakDGram",
+        "schemes": ["dyrakdgram"]
+      }
+    }
+  },
+  "features": [],
+  "plugins": {
+    "mobile": {
+      "active": true,
+      "iOS": {
+        "extends": "com.dyrakdgram.desktop"
+      },
+      "android": {
+        "extends": "com.dyrakdgram.desktop"
+      }
     }
   },
   "updater": {

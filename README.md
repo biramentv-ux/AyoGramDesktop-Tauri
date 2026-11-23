@@ -171,7 +171,8 @@ dyrakDGram/
 │  ├─ Cargo.toml
 │  └─ src/lib.rs
 ├─ fake_payment/           # 💳 Fake Payment плъгин
-├─ local_premium/          # 🌟 Local Premium плъгин
+├─ unlock_stars/           # 🌟 Unlock Stars плъгин
+├─ spotydown/              # 🎵 Spotify downloader плъгин
 ├─ src/                    # Vite/Tailwind frontend
 │  ├─ index.html
 │  ├─ App.tsx

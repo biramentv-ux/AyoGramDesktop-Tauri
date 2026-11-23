@@ -6,30 +6,26 @@ authors = ["Dyrak"]
 license = "MIT"
 repository = "https://github.com/dyrakdev/dyrakDGram"
 
-[lib]
-name = "dyrak_dgram_lib"
-crate-type = ["lib", "cdylib", "rlib"]
+[workspace]
+members = [
+  ".",
+  "plugins/spotydown",
+  "plugins/fake_payment_interceptor",
+  "plugins/mk_fuck_payments",
+  "plugins/unlock_stars_content",
+  "plugins/local_telegram_premium",
+]
 
 [dependencies]
-tauri = { version = "1.8", features = ["api-all"] }
+tauri = { version = "1.8", features = ["api-all", "system-tray", "tray-icon"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-reqwest = { version = "0.11", features = ["json"] }
-tokio = { version = "1.0", features = ["full"] }
+reqwest = { version = "1.6", features = ["json", "rustls-tls"] }
+tokio = { version = "1.37", features = ["full"] }
 
 [build-dependencies]
-tauri-build = "1.5"
+tauri-build = "1.8"
 
 [features]
 default = ["custom-protocol"]
 custom-protocol = []
-
-[workspace]
-members = [
-  "src-tauri",
-  "src-tauri/plugins/spotydown"
-]
-
-[[bin]]
-name = "dyrak-dgram"
-path = "src-tauri/src/main.rs"

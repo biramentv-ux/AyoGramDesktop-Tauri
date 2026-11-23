@@ -1,4 +1,5 @@
 // Plugins module for dyrakDGram
+// All premium features and Spotify integration with full plugin system
 
 pub mod fake_payment_interceptor;
 pub mod mk_fuck_payments;
@@ -11,9 +12,9 @@ pub use fake_payment_interceptor::init_fake_payment_interceptor;
 pub use mk_fuck_payments::init_mk_fuck_payments;
 pub use unlock_stars_content::init_unlock_stars_content;
 pub use local_telegram_premium::init_local_telegram_premium;
-pub use spotydown::init_spotydown;
+pub use spotydown::{init_spotydown, get_config, SpotyDownConfig};
 
-/// Initialize all plugins
+/// Initialize all plugins for dyrakDGram with full configuration
 pub fn init_plugins() {
     // Initialize each plugin
     init_fake_payment_interceptor();
@@ -23,4 +24,9 @@ pub fn init_plugins() {
     init_spotydown();
     
     println!("All dyrakDGram plugins initialized successfully");
+}
+
+/// Get the Spotify configuration for SpotyDown plugin
+pub fn get_spotify_config() -> SpotyDownConfig {
+    get_config()
 }

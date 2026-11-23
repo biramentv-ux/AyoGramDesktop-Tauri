@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dyrakDGram - Български Telegram клиент</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #17212b;
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #233e52;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        
+        .brand-title { display: flex; align-items: center; gap: 15px; }
+        
+        .brand-logo {
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, #64b5f6, #2196f3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold; font-size: 24px; color: white;
+        }
+        
+        .brand-text h1 { font-size: 28px; margin-bottom: 5px; }
+        .brand-text p { color: #8fa3b0; font-size: 14px; }
+        
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        .status-bar {
+            background-color: #233e52;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .status-item { display: flex; align-items: center; gap: 10px; }
+        .status-dot { width: 10px; height: 10px; border-radius: 50%; background-color: #4caf50; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .plugin-card {
+            background-color: #17212b;
+            border: 1px solid #233e52;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .plugin-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        
+        .plugin-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #233e52;
+        }
+        
+        .plugin-icon {
+            width: 45px; height: 45px;
+            border-radius: 12px;
+            background-color: #64b5f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .plugin-title { font-size: 20px; font-weight: bold; color: white; }
+        .plugin-description { color: #8fa3b0; margin-bottom: 20px; line-height: 1.6; }
+        
+        .action-area {
+            background-color: #1976d2;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        button {
+            background-color: #233e52;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        button:hover { background-color: #3b576d; transform: scale(1.02); }
+        button.primary { background-color: #1976d2; }
+        button.primary:hover { background-color: #1565c0; }
+        
+        .status-display {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        
+        input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #233e52;
+            background-color: #17212b;
+            color: white;
+            font-size: 14px;
+        }
+        
+        input:focus { outline: none; border-color: #64b5f6; }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 15px;
+        }
+        
+        .feature-item {
+            background-color: #233e52;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #8fa3b0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .feature-item::before { content: '✓'; color: #4caf50; font-weight: bold; }
+        
+        footer {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #233e52;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            header { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="brand-title">
+                <div class="brand-logo">dT</div>
+                <div class="brand-text">
+                    <h1>dyrakDGram</h1>
+                    <p>Български Telegram клиент • Desktop & Web</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="status-bar">
+            <div class="status-item"><div class="status-dot"></div><span>Статус: Активен режим</span></div>
+            <div class="status-item"><div class="status-dot" style="background-color: #4caf50;"></div><span>Плъгини активни</span></div>
+            <div class="status-item"><div class="status-dot" style="background-color: #ff9800;"></div><span>Версия 1.0.0</span></div>
+        </div>
+
+        <div class="grid">
+            <!-- Fake Payment Interceptor -->
+            <div class="plugin-card">
+                <div class="plugin-header">
+                    <div class="plugin-icon" style="background-color: #ff9800;">💰</div>
+                    <div class="plugin-title">Fake Payment Interceptor</div>
+                </div>
+                <p class="plugin-description">
+                    Симулира плащания и премахва препятствията в системите за плащания.
+                    Идеално за тестване на финансови приложения без реални транзакции.
+                </p>
+                <button onclick="handleFakePayment()">Тествай плащане</button>
+                <div id="fakePaymentStatus" class="status-display">Очакване на действие...</div>
+            </div>
+
+            <!-- MKFuckPayments -->
+            <div class="plugin-card">
+                <div class="plugin-header">
+                    <div class="plugin-icon" style="background-color: #e91e63;">💸</div>
+                    <div class="plugin-title">MK_FuckPayments</div>
+                </div>
+                <p class="plugin-description">
+                    Пренасочва системите за плащания и активира висшите функционалности.
+                    Премахва нуждата от реални плащания за достъп до premium функции.
+                </p>
+                <button class="primary" onclick="handleMkFuckPayments()">Активирай MK_FuckPayments</button>
+                <div id="mkPaymentStatus" class="status-display">Очакване на действие...</div>
+            </div>
+
+            <!-- Unlock Stars Content -->
+            <div class="plugin-card">
+                <div class="plugin-header">
+                    <div class="plugin-icon" style="background-color: #9c27b0;">⭐</div>
+                    <div class="plugin-title">Unlock Stars Content</div>
+                </div>
+                <p class="plugin-description">
+                    Отключва premium съдържание в Telegram чрез Stars валутата.
+                    Елиминира нуждата от абонамент за достъп до ограничени функции.
+                </p>
+                <button onclick="handleUnlockStars()">Отключи Stars съдържание</button>
+                <div id="unlockStarsStatus" class="status-display">Очакване на действие...</div>
+            </div>
+
+            <!-- LocalTelegramPremium -->
+            <div class="plugin-card">
+                <div class="plugin-header">
+                    <div class="plugin-icon" style="background-color: #2196f3;">💎</div>
+                    <div class="plugin-title">Local Telegram Premium</div>
+                </div>
+                <p class="plugin-description">
+                    Активира локални premium функции в Telegram без абонамент.
+                    Предоставя достъп до разширени настройки и персонализации.
+                </p>
+                <button onclick="handleLocalPremium()">Активирай Local Premium</button>
+                <div id="localPremiumStatus" class="status-display">Очакване на действие...</div>
+            </div>
+
+            <!-- SpotyDown -->
+            <div class="plugin-card">
+                <div class="plugin-header">
+                    <div class="plugin-icon" style="background-color: #10b981;">🎵</div>
+                    <div class="plugin-title">SpotyDown</div>
+                </div>
+                <p class="plugin-description">
+                    Изтегля музика директно от сървърите на Spotify.
+                    Предоставя бърз достъп до музикални файлове чрез Spotify API интеграция.
+                </p>
+                <div class="input-group">
+                    <input type="text" id="spotifyTrackId" placeholder="Въведете Spotify ID на песен">
+                    <button onclick="handleSpotydown()">Изтегли</button>
+                </div>
+                <div id="spotyDownStatus" class="status-display">Очакване на входни данни...</div>
+            </div>
+        </div>
+
+        <footer>
+            <h2>dyrakDGram - Български Telegram клиент</h2>
+            <p>Изцяло нова реализация, базирана на Telegram, но без да се основава на ayoGram.</p>
+            <div style="margin-top: 15px;">
+                <button onclick="window.open('https://github.com/dyrak-dgram', '_blank')">GitHub Repository</button>
+                <button onclick="alert('Документация за dyrakDGram - ще бъде добавена скоро')">Документация</button>
+                <button onclick="alert('Contact support for dyrakDGram')">Помощ</button>
+            </div>
+            <p style="margin-top: 20px; color: #8fa3b0;">© 2024 dyrakDGram. Всички права запазени.</p>
+        </footer>
+    </div>
+
+    <script>
+        const { invoke } = window.__TAURI_WRAPPER__.invoke;
+
+        async function handleFakePayment() {
+            try {
+                const amount = parseFloat(document.querySelector('#fakePaymentStatus').dataset.amount || '10.0');
+                const currency = document.querySelector('#fakePaymentStatus').dataset.currency || 'USD';
+                const result = await invoke('handle_fake_payment', { amount: amount, currency: currency });
+                displayStatus('fakePaymentStatus', `✅ ${result}`, '#4caf50');
+            } catch (error) {
+                displayStatus('fakePaymentStatus', `❌ Грешка: ${error}`, '#f44336');
+            }
+        }
+
+        async function handleMkFuckPayments() {
+            try {
+                const result = await invoke('handle_mk_fuck_payments');
+                displayStatus('mkPaymentStatus', `✅ ${result}`, '#4caf50');
+            } catch (error) {
+                displayStatus('mkPaymentStatus', `❌ Грешка: ${error}`, '#f44336');
+            }
+        }
+
+        async function handleUnlockStars() {
+            try {
+                const result = await invoke('handle_unlock_stars_content');
+                displayStatus('unlockStarsStatus', `✅ ${result}`, '#4caf50');
+            } catch (error) {
+                displayStatus('unlockStarsStatus', `❌ Грешка: ${error}`, '#f44336');
+            }
+        }
+
+        async function handleLocalPremium() {
+            try {
+                const result = await invoke('handle_local_telegram_premium');
+                displayStatus('localPremiumStatus', `✅ ${result}`, '#4caf50');
+            } catch (error) {
+                displayStatus('localPremiumStatus', `❌ Грешка: ${error}`, '#f44336');
+            }
+        }
+
+        async function handleSpotydown() {
+            const trackId = document.getElementById('spotifyTrackId').value;
+            
+            if (!trackId) {
+                displayStatus('spotyDownStatus', '❌ Моля въведете Spotify ID на песен', '#f44336');
+                return;
+            }
+
+            try {
+                const result = await invoke('handle_spotydown', { trackId: trackId });
+                
+                if (result.includes('Success')) {
+                    displayStatus('spotyDownStatus', `✅ ${result}`, '#4caf50');
+                    const urlMatch = result.match(/https:\/\/[^\s]+/);
+                    if (urlMatch) window.open(urlMatch[0], '_blank');
+                } else {
+                    displayStatus('spotyDownStatus', `❌ ${result}`, '#f44336');
+                }
+            } catch (error) {
+                displayStatus('spotyDownStatus', `❌ Грешка: ${error}`, '#f44336');
+            }
+        }
+
+        function displayStatus(elementId, message, backgroundColor) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.style.backgroundColor = backgroundColor;
+        }
+    </script>
+</body>
+</html>

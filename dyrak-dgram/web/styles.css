@@ -1,0 +1,14 @@
+/* Additional custom styles for dyrakDGram */
+.plugin-card {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.status-bar {
+    border-left: 5px solid #2196f3;
+}
+
+.feature-item::before {
+    content: '✓';
+    color: #4caf50;
+    font-weight: bold;
+}

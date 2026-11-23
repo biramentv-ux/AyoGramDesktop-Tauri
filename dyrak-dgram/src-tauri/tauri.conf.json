@@ -1,79 +1,33 @@
 {
-  "$schema": "https://schema.tauri.dev/config-2.4",
-  "name": "dyrakDGram",
-  "description": "Български Telegram клиент с плъгини и разширена функционалност",
-  "version": "1.0.0",
-  "icon": "icons/icon.png",
-  "license": "MIT",
-  "author": "dyrakDGram Team",
-  "build": {
-    "devPath": "../web",
-    "distDir": "../web"
-  },
-  "bundle": {
+  "$schema": "https://schema.tauri.app/com.tauri-2.0",
+  "productName": "dyrakDGram",
+  "version": "2.0.0",
+  " bundler": {
     "active": true,
-    "identifier": "com.dyrakdgram.desktop",
+    "targets": "all",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
       "icons/256x256.png",
       "icons/512x512.png",
-      "icons/icon.icns",
-      "icons/icon.ico"
-    ],
-    "longDescription": "A custom Telegram fork desktop application with Bulgarian support and advanced plugins.",
-    "windows": {
-      "certificateThumbprint": null,
-      "digestAlgorithm": "sha256",
-      "timestamp": true,
-      "tspUrl": "http://timestamp.digicert.com"
-    },
-    "macOS": {
-      "protocols": {
-        "name": "dyrakDGram",
-        "schemes": ["dyrakdgram"]
-      }
-    },
-    "iOS": {
-      "extends": "com.dyrakdgram.desktop",
-      "protocols": {
-        "name": "dyrakDGram",
-        "schemes": ["dyrakdgram"]
-      }
-    },
+      "icons/1024x1024.png"
+    ]
+  },
+  "mobile": {
     "android": {
-      "extends": "com.dyrakdgram.desktop",
-      "protocols": {
-        "name": "dyrakDGram",
-        "schemes": ["dyrakdgram"]
-      }
-    }
-  },
-  "features": [],
-  "plugins": {
-    "mobile": {
-      "active": true,
-      "iOS": {
-        "extends": "com.dyrakdgram.desktop"
-      },
-      "android": {
-        "extends": "com.dyrakdgram.desktop"
-      }
-    }
-  },
-  "updater": {
-    "active": true,
-    "endpoints": {
-      "latest": "https://api.github.com/repos/{{user}}/{{repo}}/releases/latest",
-      "update": "https://api.github.com/repos/{{user}}/{{repo}}/releases?prerelease=true"
+      "project_path": "./android",
+      "package_name": "com.dyragram.mobile",
+      "min_sdk": 21,
+      "target_sdk": 35
     },
-    "api": {
-      "baseUrl": "https://dyrak-dgram.github.io/releases/",
-      "github": {
-        "owner": "dyrak-dgram",
-        "repo": "dyrak-dgram",
-        "release_template": "{{tag}}"
-      }
+    "ios": {
+      "project_path": "./ios",
+      "bundle_id": "com.dyragram.mobile",
+      "deployment_target": "12.0"
     }
+  },
+  "build": {
+    "frontend_dist": "../web/dist",
+    "devUrl": "http://localhost:3000"
   }
 }

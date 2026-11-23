@@ -1,0 +1,49 @@
+dyrakDGram Mobile Project Structure
+=====================================
+
+dyrak-dgram/
+├── src-tauri/               # Tauri backend (Rust)
+│   ├── Cargo.toml          # Rust dependencies
+│   └── src/
+│       ├── main.rs         # Application entry point
+│       ├── lib.rs          # Library with commands
+│       └── plugins/
+│           ├── mod.rs      # Plugin modules
+│           └── mobile.rs   # Mobile-specific plugin (NEW)
+├── android/               # Android platform files (NEW)
+│   ├── res/              # Android resources
+│   │   ├── drawable/    # App icons
+│   │   ├── layout/      # UI layouts
+│   │   └── values/      # Strings, colors, styles
+│   ├── AndroidManifest.xml
+│   └── build.gradle      # Android build config
+├── ios/                  # iOS platform files (NEW)
+│   ├── Info.plist        # App configuration
+│   └── LaunchScreen.storyboard
+├── web/                 # Web application (Frontend)
+│   ├── src/
+│   │   ├── index.js     # React entry point
+│   │   ├── App.jsx      # Main React component
+│   │   ├── index.css    # Global styles
+│   │   └── personal-domain-config.js
+│   ├── index.html
+│   ├── vite.config.js
+│   └── tailwind.config.js
+├── build-mobile.sh       # Mobile build script (NEW)
+├── build.bat            # Windows build script
+├── MOBILE_README_BG.md  # Bulgarian mobile guide (NEW)
+├── MOBBILE_CONFIG.toml  # Mobile configuration (NEW)
+└── DEPLOYMENT.md        # Deployment guide (NEW)
+
+Key Files:
+- src-tauri/src/lib.rs: Main Rust backend logic
+- android/: Android platform configuration
+- ios/: iOS platform configuration  
+- web/: Web application frontend
+- build-mobile.sh: Script for building all platforms
+
+Mobile Features:
+- Android APK builds with Tauri mobile
+- iOS IPA builds for App Store
+- Web deployment to personal domain
+- Cross-platform plugin architecture

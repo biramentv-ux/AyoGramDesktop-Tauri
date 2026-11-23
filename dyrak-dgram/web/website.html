@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dyrakDGram - Персонален Telegram Клиент</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: white;
+      min-height: 100vh;
+    }
+    
+    .hero {
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(45deg, #0f3460 0%, #16213e 100%);
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      color: #a0a0a0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .features {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .download-section {
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(45deg, #0f3460 0%, #1a1a2e 100%);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 114, 255, 0.4);
+    }
+    
+    .platforms {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .platform-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      min-width: 200px;
+    }
+    
+    .platform-card h3 {
+      margin-bottom: 10px;
+      color: #00c6ff;
+    }
+    
+    .footer {
+      padding: 40px 20px;
+      text-align: center;
+      background: #0a0a15;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>dyrakDGram</h1>
+    <p>Персонален Telegram клиент с модерн дизайн и плъгин архитектура.</p>
+  </header>
+  
+  <section class="features">
+    <h2 style="text-align: center; margin-bottom: 30px;">Функции</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Мобилна Версия</h3>
+        <p>Пълна поддръжка за Android и iOS устройства.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💻</div>
+        <h3>Desktop Клиент</h3>
+        <p>Бърз и лек Tauri desktop приложение за всички платформи.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Уеб Версия</h3>
+        <p>Достъпенdirectly от вашия персонален домейн.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="download-section">
+    <h2>Изтегли dyrakDGram</h2>
+    <p style="color: #a0a0a0; margin-top: 15px;">Достъпен за всички основни платформи</p>
+    
+    <div class="platforms">
+      <div class="platform-card">
+        <h3>📱 Android</h3>
+        <p>APK инсталатор за Android устройства</p>
+        <a href="/downloads/dyragram-android.apk" class="btn btn-primary" style="margin-top: 15px;">Изтегли APK</a>
+      </div>
+      <div class="platform-card">
+        <h3>🍎 iOS</h3>
+        <p>iOS приложение за iPhone и iPad</p>
+        <a href="/downloads/dyragram-ios.ipa" class="btn btn-primary" style="margin-top: 15px;">Изтегли IPA</a>
+      </div>
+      <div class="platform-card">
+        <h3>💻 Desktop</h3>
+        <p>Windows, macOS и Linux</p>
+        <a href="/downloads/dyragram-desktop.exe" class="btn btn-primary" style="margin-top: 15px;">Изтегли</a>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="footer">
+    <div class="container">
+      <h2>dyrakDGram</h2>
+      <p>Персонален Telegram клиент с Tauri и Rust</p>
+      
+      <div class="social-links">
+        <a href="https://github.com/dyragram" style="color: #fff; text-decoration: none;">GitHub</a>
+        <a href="https://t.me/dyragram" style="color: #fff; text-decoration: none;">Telegram</a>
+        <a href="https://twitter.com/dyragram" style="color: #fff; text-decoration: none;">Twitter</a>
+      </div>
+      
+      <p style="margin-top: 30px; color: #666;">© 2024 dyrakDGram. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

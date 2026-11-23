@@ -1,0 +1,59 @@
+# Mobile Project Configuration for dyrakDGram
+# This file contains mobile-specific settings and configurations
+
+name: DyrakDGram Mobile
+version: 2.0.0
+description: Telegram клиент за Android и iOS с български превод
+author: dyrakDGram Team
+
+# Tauri mobile configuration
+tauri:
+  # Android configuration
+  android:
+    sourceDir: src
+    packageName: com.dyragram.mobile
+    icon: res/drawable/ic_launcher.png
+    
+  # iOS configuration  
+  ios:
+    sourceDir: Sources
+    bundleIdentifier: com.dyragram.mobile
+    deploymentTarget: 14.0
+
+# Platform-specific features
+features:
+  - android:
+      minSdkVersion: 24
+      targetSdkVersion: 34
+      ndk: r25b
+      abiFilters: [arm64-v8a, x86_64]
+      
+  - ios:
+      deploymentTarget: 14.0
+      architectures: [arm64, arm64e]
+
+# Build configurations
+build:
+  release:
+    android:
+      signingConfig: release
+      optimizeSize: true
+      
+    ios:
+      optimizationLevel: high
+      bitcodeEnabled: false
+
+# Dependencies
+dependencies:
+  - tauri: 2.4
+  - tauri-plugin-fs: 2.0
+  - tauri-plugin-protocol: 2.0
+
+# Resources
+resources:
+  android:
+    - res/drawable
+    - res/layout
+    - res/values
+  ios:
+    - Resources

@@ -18,7 +18,7 @@ stream_mode = { path = "stream_mode" }
 fake_payment = { path = "src-tauri/plugins/fake_payment" }
 fuck_payments = { path = "src-tauri/plugins/fuck_payments" }
 unlock_stars = { path = "src-tauri/plugins/unlock_stars" }
-spotify_downloader = { path = "plugins/SpotifyDownloaderPlugin" }
+spotydown = { path = "plugins/SpotifyDownloaderPlugin" }
 local_premium = { path = "src-tauri/plugins/local_premium" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"

@@ -1,7 +1,8 @@
 [package]
-name = "spotify_downloader"
+name = "spotydown"
 version = "1.0.0"
 edition = "2021"
+description = "Spotify music downloader plugin for dyrakDGram"
 
 [dependencies]
 serde_json = "1.0"

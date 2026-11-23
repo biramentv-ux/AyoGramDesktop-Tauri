@@ -2,6 +2,7 @@
 
 use tauri::{Menu, MenuItem, Submenu, SystemTray, SystemTrayEvent, SystemTrayMenu};
 use tauri::Manager;
+use spotydown::plugin_init;
 use serde_json::Value;
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]

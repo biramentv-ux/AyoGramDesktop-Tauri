@@ -11,6 +11,7 @@
 - 🌍 **Bulgarian Interface** - Full Bulgarian language support
 - 🪟 **Windows Portable** - Ready-to-use portable version for Windows
 - 🌐 **Web Version** - GitHub Pages deployment with full functionality
+- 🔗 **dyrakarmy.eu Mirror** - Alternate access domain
 
 ## 📦 Plugins
 
@@ -53,6 +54,8 @@ npm run tauri dev
 
 - **[BUILD_README.md](./BUILD_README.md)** - Complete build instructions for all platforms
 - **[CHANGELOG.md](./CHANGELOG.md)** - Version history and changes
+- **[WINDOWS_PORTABLE_README.md](./WINDOWS_PORTABLE_README.md)** - Windows portable version guide
+- **[БУЛГАРСКА_ДОКУМЕНТАЦИЯ.md](./БУЛГАРСКА_ДОКУМЕНТАЦИЯ.md)** - Full Bulgarian user manual
 
 ## 💻 Supported Platforms
 
@@ -60,6 +63,7 @@ npm run tauri dev
 - ✅ macOS (Universal: Intel + Apple Silicon)
 - ✅ Linux (Debian, RPM, AppImage)
 - 🌐 Web (GitHub Pages)
+- 🔗 Mirror: [dyrakarmy.eu](https://dyrakarmy.eu)
 
 ## 🔧 Development
 

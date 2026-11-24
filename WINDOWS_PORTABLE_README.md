@@ -95,7 +95,7 @@ rm -rf %APPDATA%\dyrakDGram\plugins\
 ## 📊 System Requirements
 
 ### Minimum
-- Windows 10 (64-bit)
+- Windows 10/11 (64-bit)
 - 2GB RAM
 - 500MB disk space
 - Internet connection

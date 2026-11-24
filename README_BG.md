@@ -1,0 +1,288 @@
+# dyrakDGram - Пълно ръководство на български език
+
+## 📖 Въведение
+
+dyrakDGram е модерен Telegram клиент за настолни компютри, изграден с Tauri, който предоставя разширени функции чрез персонализирани плъгини. Тази версия предлага пълен Windows портативен формат и интеграция с Spotify.
+
+## 🎯 Основни функции
+
+### Платформа
+- ⚡ Tauri desktop framework (Rust-based)
+- 🪟 Windows portable version
+- 🌐 Web frontend with GitHub Pages
+- 📱 Mobile support (Android/iOS)
+- 🔗 Домейн: [dyrakarmy.eu](https://dyrakarmy.eu)
+
+### Плъгини
+1. **FakePaymentInterceptor** - Имитирана успешно обработка на плащания
+2. **MKFuckPayments** - Заобикаляне на плащателни системи  
+3. **UnlockStarsContent** - Отключване на Telegram Stars съдържание
+4. **LocalTelegramPremium** - Активиране на премиум без абонамент
+5. **SpotyDown** - Spotify интеграция за музикално изтегляне
+
+## 🚀 Как да стартирате dyrakDGram
+
+### Системни изисквания
+- Windows 10/11 (64-bit)
+- macOS 10.14+
+- Linux (Ubuntu 20.04+, Debian 11+)
+- 4GB RAM (минимум)
+- 500MB свободно място
+
+### Стъпка 1: Изтегляне
+```
+# GitHub репозиторий
+https://github.com/dyrakdev/dyragram
+
+# GitLab резервен копие  
+https://gitlab.com/biramentv-ux/AyoGramDesktop-Tauri
+```
+
+### Стъпка 2: Инсталиране
+
+#### Windows (Portable)
+1. Изтеглете `dyrakDGram_[version]_x64.exe`
+2. Копирайте в желана папка
+3. Стартирайте изпълнимия файл
+
+#### Windows (Installer)
+1. Изтеглете `dyrakDGram_[version]_x64_setup.exe`
+2. Стартирайте инсталатора
+3. Следвайте инструкциите
+
+### Стъпка 3: Конфигурация
+- Отворете приложението
+- Настройте предпочитанията
+- Активирайте плъгини
+
+## 📦 Плъгини - Подробно ръководство
+
+### 1. FakePaymentInterceptor (Имитиран плащателен интерфейс)
+
+**Функция:** Имитира успешно обработка на плащания за тестване.
+
+**Как да го използвате:**
+```javascript
+// В уеб интерфейса
+await handle_fake_payment_interceptor(10.50, "USD");
+```
+
+**Резултат:**
+```
+"Fake payment of 10.50 USD processed successfully via Stripe!"
+```
+
+### 2. MKFuckPayments (Прекомерен плащателен заобикаляне)
+
+**Функция:** Заобикаля плащателни системи и активира премиум функции.
+
+**Използване:**
+```javascript
+await handle_mk_fuck_payments_plugin();
+```
+
+**Резултат:**
+```
+"MK_FuckPayments plugin activated - all payment barriers removed!"
+```
+
+### 3. UnlockStarsContent (Отключване на Stars съдържание)
+
+**Функция:** Отключва всичко Telegram Stars премиум съдържание.
+
+**Използване:**
+```javascript
+await handle_unlock_stars_content_plugin();
+```
+
+**Резултат:**
+```
+"Telegram Premium Stars content unlocked successfully!"
+```
+
+### 4. LocalTelegramPremium (Локален Telegram премиум)
+
+**Функция:** Активира локални премиум функции без абонамент.
+
+**Използване:**
+```javascript
+await handle_local_telegram_premium_plugin();
+```
+
+**Резултат:**
+```
+"Local Telegram Premium activated - all premium features unlocked!"
+```
+
+### 5. SpotyDown (Spotify музикална интеграция)
+
+**Функция:** Интеграция с Spotify за музикално изтегляне.
+
+**Използване:**
+```javascript
+await handle_spotydown("3nFkdlpI2AzSQfUW1qg5hY");
+```
+
+**Резултат:**
+```
+"Track downloaded from Spotify successfully!"
+```
+
+## ⚙️ Настройки и конфигурация
+
+### Конфигурационен файл
+```
+%APPDATA%\dyrakDGram\config.json
+```
+
+```json
+{
+  "theme": "dark",
+  "language": "bg",
+  "download_directory": "C:\Users\Public\Music\Spotify",
+  "cache_directory": "%APPDATA%\dyrakDGram\cache",
+  "plugins_enabled": true,
+  "auto_update": true
+}
+```
+
+### Препоръчителни настройки
+- **Тема:** Dark (по подразбиране)
+- **Език:** Български
+- **Download Directory:** `C:\Users\Public\Music\Spotify`
+- **Cache Directory:** `%APPDATA%\dyrakDGram\cache`
+
+## 🔑 Клавишни комбинации
+
+| Комбинация | Действие |
+|-----------|----------|
+| Ctrl+Shift+P | Превключване на Premium режим |
+| Ctrl+Shift+S | Spotify изтегляне |
+| Ctrl+R | Обновяване на плъгини |
+| F5 | Презареждане на приложението |
+| Ctrl+L | Локализация (Български/Английски) |
+
+## 🎵 SpotyDown - Подробно ръководство
+
+### Как да изтегляте музика
+1. Копирайте Spotify URL от браузъра
+2. Поставете в полето за изтегляне
+3. Изберете формат (MP3/AAC/WAV)
+4. Натиснете "Изтегли"
+
+### Поддържани формати
+- **MP3** - Компресиран, добър качествен звук
+- **AAC** - Apple iPod формат
+- **WAV** - Без компресия, най-добро качество
+
+### Batch изтегляне
+1. Импортирайте playlist URL
+2. Добавете множество тракове
+3. Изтеглете всички едновременно
+
+## 🔧 Административни команди
+
+### Версия проверка
+```bash
+./dyrakDGram.exe --version
+```
+
+### Проверка за актуализации
+```bash
+./dyrakDGram.exe --check-updates
+```
+
+### Режим отстраняване на грешки
+```bash
+./dyrakDGram.exe --debug
+```
+
+## 🐛 Често срещани проблеми
+
+### Проблем: "Plugin not found"
+**Решение:**
+```bash
+# Изчистете кеша на плъгините
+rm -rf %APPDATA%\dyrakDGram\plugins\
+```
+
+### Проблем: Spotify изтегляне не работи
+**Причини и решения:**
+1. Проверете интернет връзката
+2. Уверете се, че Spotify URL е правилно форматиран
+3. Опитайте с друг трак
+
+### Проблем: Аудио плеър не функционира
+**Решения:**
+1. Инсталирайте LAV Filters
+2. Обновете аудио драйверите
+3. Проверете файловите разрешения
+
+## 📊 Системни изисквания
+
+### Минимум
+- Windows 10/11 (64-bit)
+- 2GB RAM
+- 500MB дисково пространство
+- Интернет връзка
+
+### Препоръчително
+- Windows 11 или macOS 10.14+
+- 8GB+ RAM
+- SSD хранилище
+- Високоскоростен интернет
+
+## 🔄 Обновяване и поддръжка
+
+### Автоматични обновления
+```bash
+# Проверете за обновления
+.\dyrakDGram.exe --check-updates
+
+# Ръчно обновяване
+curl -L https://github.com/dyrakdev/dyragram/releases/latest -o dyrakDGram_setup.exe
+```
+
+### Деинсталиране
+1. Затворете всички инстанции
+2. Изтрийте програмната папка
+3. Изчистете конфигурация: `%APPDATA%\dyrakDGram\`
+4. Изчистете кеш: `%LOCALAPPDATA%\dyrakDGram\`
+
+## 📝 Build команди
+
+### Windows build
+```bash
+.\build-win.bat
+```
+
+### Linux/macOS build
+```bash
+# Първо инсталирайте зависимостите
+sudo apt install libgtk-3-dev libwebkit2gtk-4.0-dev \
+    pkg-config libasound2-dev
+
+# След това изградете
+npm run tauri build
+```
+
+## 🌐 Web версия
+
+dyrakDGram е достъпна и като уеб приложение:
+- GitHub Pages: `https://dyrakdev.github.io/dyragram`
+- Пълна функционалност
+- Бързо зареждане
+- Мобилна оптимизация
+
+## 📚 Допълнителни ресурси
+
+- [GitHub Repository](https://github.com/dyrakdev/dyragram)
+- [GitLab Mirror](https://gitlab.com/biramentv-ux/AyoGramDesktop-Tauri)
+- [Tauri Documentation](https://tauri.app/)
+- [Spotify API](https://developer.spotify.com/)
+
+---
+
+**dyrakDGram** - Telegram Desktop Client с премиум функции и Spotify интеграция
+
+*Разработено за България - Full Bulgarian support*

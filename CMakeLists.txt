@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.10)
+project(dyGRAM_PluginTest)
+
+set(CMAKE_CXX_STANDARD 17)
+
+# Include the plugins definitions
+include(Plugins-CMakeLists.txt)
+
+# Add test executable
+add_executable(test_plugins test_plugins.cpp)
+target_link_libraries(test_plugins GhostModePlugin MK_FuckPaymentsPlugin FakePaymentInterceptorPlugin UnlockStarsContentPlugin LocalTelegramPremiumPlugin)
+target_link_libraries(test_plugins PRIVATE MK_FuckPaymentsPlugin FakePaymentInterceptorPlugin UnlockStarsContentPlugin LocalTelegramPremiumPlugin)

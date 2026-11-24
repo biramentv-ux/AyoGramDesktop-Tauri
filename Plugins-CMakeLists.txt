@@ -1,0 +1,16 @@
+# Add plugins
+
+add_library(MK_FuckPaymentsPlugin MK_FuckPaymentsPlugin.cpp MK_FuckPaymentsPlugin.h)
+target_include_directories(MK_FuckPaymentsPlugin PUBLIC .)
+
+add_library(FakePaymentInterceptorPlugin FakePaymentInterceptorPlugin.cpp FakePaymentInterceptorPlugin.h)
+target_include_directories(FakePaymentInterceptorPlugin PUBLIC .)
+
+add_library(UnlockStarsContentPlugin UnlockStarsContentPlugin.cpp UnlockStarsContentPlugin.h)
+target_include_directories(UnlockStarsContentPlugin PUBLIC .)
+
+add_library(LocalTelegramPremiumPlugin LocalTelegramPremiumPlugin.cpp LocalTelegramPremiumPlugin.h)
+target_include_directories(LocalTelegramPremiumPlugin PUBLIC .)
+
+# Link plugins to main application
+target_link_libraries(main_app PRIVATE MK_FuckPaymentsPlugin FakePaymentInterceptorPlugin UnlockStarsContentPlugin LocalTelegramPremiumPlugin)

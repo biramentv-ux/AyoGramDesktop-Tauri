@@ -19,8 +19,8 @@ Complete guide for building dyrakDGram across all platforms.
 
 ### Clone Repository
 ```bash
-git clone https://github.com/dyragram/dyragram.git
-cd dyragram
+git clone https://github.com/dyrakdev/dyragram.git
+cd dyrakDGram
 ```
 
 ### Install Dependencies
@@ -38,23 +38,39 @@ npm run tauri dev
 ### Windows Build
 ```bash
 # Windows (Command Prompt)
-build.bat
+.\build-win.bat
 
-# Windows (PowerShell)
-.\Build-Tauri.ps1
+# Or using PowerShell
+.\Build-Tauri.ps1 --release
+
+# Development build
+.\Build-Tauri.ps1 --dev
 ```
 
 ### Linux/macOS Build
 ```bash
-./build.sh
+# Install dependencies first
+sudo apt install libgtk-3-dev libwebkit2gtk-4.0-dev \
+    pkg-config libasound2-dev libxcb-composite0-dev \
+    libxcomposite1 libxcomposite-dev libxcursor1 \
+    libxcursor-dev libxdamage1 libxdamage-dev \
+    libxi-dev libxinerama1 libxinerama-dev \
+    libxkbcommon-dev libxrandr-dev libxrender-dev \
+    libxtst-dev
+
+# Build for production
+npm run tauri build
 ```
 
-### Build Output Structure
+## 📦 Output Structure
+
+After building, you'll find:
+
 ```
 src-tauri/target/release/bundle/
 ├── Windows Portable (x64)
-│   ├── dyrakDGram_[version]_x64.exe
-│   └── dyrakDGram_[version]_x64_setup.exe
+│   ├── dyrakDGram_[version]_x64.exe (Portable)
+│   └── dyrakDGram_[version]_x64_setup.exe (Installer)
 ├── macOS
 │   ├── dyrakDGram_[version]_aarch64.dmg
 │   └── dyrakDGram_[version]_x64.dmg
@@ -64,125 +80,60 @@ src-tauri/target/release/bundle/
     └── dyrakDGram_[version]_x86_64.rpm
 ```
 
-## 📦 Windows Portable Version
+## 🔌 Plugin Commands
 
-### Create Portable Version Manually
-```bash
-cargo build --release
-mkdir dist\dyrakDGram
-copy target\release\dyrakDGram.exe dist\dyrakDGram\
-echo { "portable": true } > dist\dyrakDGram\config.json
-```
+### Web Frontend Integration
+The web frontend includes all plugin integrations:
+- Fake Payment Interceptor
+- MK Fuck Payments
+- Unlock Stars Content  
+- Local Telegram Premium
+- SpotyDown
 
-### Portable Directory Structure
-```
-dist/dyrakDGram/
-├── dyrakDGram.exe     # Main executable
-├── config/            # Configuration files
-│   └── app.json       # App settings
-├── plugins/           # Plugin directory
-└── start.bat          # Quick start script
-```
+## 🐛 Troubleshooting
+
+### Common Build Issues
+1. **WebView2 not found**: Install [Microsoft Edge WebView2](https://developer.microsoft.com/en-us/microsoft-edge/webview2/)
+2. **Build failed**: Run `cargo clean && npm run tauri build`
+3. **Dependency errors**: Update Rust: `rustup update`
 
 ## 🚀 Deployment
 
-### Push to GitHub
+### GitHub Actions
+The project uses CI/CD for automated builds:
+- Push to `main` → Automated deployment
+- Pull requests → Build verification
+
+### Manual Deployment
 ```bash
-git add -A
-git commit -m "feat: update to version X.Y.Z"
+# Push changes to GitHub
+git add .
+git commit -m "Your commit message"
 git push origin main
+
+# Push to GitLab (backup)
+git push gitlab main
 ```
 
-### Automated CI/CD
-The project uses GitHub Actions for automated builds:
-- `.github/workflows/ci.yml` - Continuous integration
-- Automatic releases on tag creation
+## 📝 Build Scripts
 
-## 🔍 Troubleshooting
+### Available Scripts
+- `build.bat` - Windows build script
+- `build.sh` - Linux/macOS build script  
+- `BUILD_AND_RUN.bat` - Build and run on Windows
+- `Build-Tauri.ps1` - PowerShell build script
 
-### Common Issues
+## 🔍 Verification
 
-**Rust not found**
+After building, verify the installation:
 ```bash
-# Verify installation
-cargo --version
-# If not found, reinstall from https://rustup.rs/
+# Check build output
+ls src-tauri/target/release/bundle/
+
+# Verify executable
+./target/release/dyrak-dgram --version
 ```
-
-**Build errors on Windows**
-```bash
-# Install Visual Studio Build Tools
-# Download from: https://visualstudio.microsoft.com/downloads/
-```
-
-**Node module issues**
-```bash
-# Clean install
-rm -rf node_modules package-lock.json
-npm install
-```
-
-### Verification Commands
-```bash
-# Check Rust installation
-cargo --version
-rustc --version
-
-# Check Tauri installation
-cargo tauri --version
-
-# Check Node.js installation
-node --version
-npm --version
-```
-
-## 📝 Build Scripts Reference
-
-### build.bat (Windows)
-- Cleans previous builds
-- Builds release version
-- Creates portable directory structure
-- Copies all necessary files
-
-### build.sh (Linux/macOS)
-- Same functionality as build.bat
-- Cross-platform compatibility
-- Unix-style path handling
-
-### deploy.sh
-- Pushes changes to GitHub
-- Syncs with GitLab mirror
-- Updates documentation
-
-## 🎯 Customization
-
-### Modify Build Configuration
-Edit `src-tauri/tauri.conf.json`:
-```json
-{
-  "bundle": {
-    "windows": {
-      "signCommand": "signtool.exe sign /fd SHA256 /t https://timestamp.digicert.com",
-      "length": 20
-    }
-  }
-}
-```
-
-### Add New Plugins
-1. Create plugin in `src-tauri/src/plugins/`
-2. Update `mod.rs` with new plugin exports
-3. Update Cargo.toml dependencies
-4. Rebuild application
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your branch: `git checkout -b feature/AmazingFeature`
-3. Commit your changes: `git commit -m 'feat: add amazing feature'`
-4. Push to branch: `git push origin feature/AmazingFeature`
-5. Open a Pull Request
 
 ---
 
-**Built with Tauri and Rust 🦀**
+*For more information, see [README.md](./README.md) and [CHANGELOG.md](./CHANGELOG.md)*

@@ -29,76 +29,69 @@ Activates local premium features with 100% working implementation.
 ### 5. SpotyDown
 Spotify integration plugin for music downloading with MP3/AAC/WAV format support.
 
-## 🚀 Installation
+## 🚀 Quick Start
 
-### Windows Portable Version
-1. Download the latest Windows portable release
-2. Extract to your preferred location
-3. Run `dyrak-dgram.exe` - no installation required!
+### Prerequisites
+- Node.js 16+ 
+- Rust (install from [rustup.rs](https://rustup.rs))
+- Tauri CLI: `npm install -g @tauri-apps/cli`
 
-### Web Version
-Visit [dyragram.github.io/dyragram](https://dyragram.github.io/dyragram) for the web version.
-
-### From Source
+### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/dyragram/dyragram.git
-cd dyragram
+git clone https://github.com/dyrakdev/dyragram.git
+cd dyrakDGram
 
-# Build Tauri application
-cd src-tauri
-cargo build --release
-cargo tauri build
-```
-
-## 📁 Project Structure
-
-```
-dyrak-dgram/
-├── src-tauri/          # Tauri backend with plugins
-│   └── src/plugins/    # Plugin implementations
-├── web/               # Web frontend (GitHub Pages)
-└── .github/workflows/ # CI/CD configuration
-```
-
-## 🛠️ Development
-
-### Build Scripts
-- `build.bat` - Windows build script
-- `build.sh` - Linux/macOS build script
-
-### Commands
-```bash
 # Install dependencies
 npm install
 
-# Run development version
+# Start development mode
 npm run tauri dev
-
-# Build production version
-npm run tauri build
 ```
 
-## 🤝 Contributing
+## 📖 Documentation
 
-Contributions are welcome! Please read our [contributing guidelines](CONTRIBUTING.md) first.
+- **[BUILD_README.md](./BUILD_README.md)** - Complete build instructions for all platforms
+- **[CHANGELOG.md](./CHANGELOG.md)** - Version history and changes
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'feat: add some amazing feature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## 💻 Supported Platforms
+
+- ✅ Windows (Portable + Installer)
+- ✅ macOS (Universal: Intel + Apple Silicon)
+- ✅ Linux (Debian, RPM, AppImage)
+- 🌐 Web (GitHub Pages)
+
+## 🔧 Development
+
+### Build Commands
+```bash
+# Development build
+npm run tauri dev
+
+# Production build
+npm run tauri build
+
+# Windows portable build
+./build-win.bat
+```
+
+### Project Structure
+```
+dyrakDGram/
+├── src-tauri/          # Tauri backend with plugins
+├── web/                # Web frontend
+├── .github/           # CI/CD workflows
+└── scripts/           # Build and deployment scripts
+```
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
-## 🙏 Acknowledgments
+## 👥 Author
 
-- Telegram for the amazing messaging platform
-- Tauri team for the cross-platform framework
-- All contributors and users of dyrakDGram
+**Dyrak** - GitHub: [@dyrakdev](https://github.com/dyrakdev)
 
 ---
 
-**Made with ❤️ by the dyrakDGram community**
+*dyrakDGram: Premium Telegram Desktop Client with Enhanced Features*

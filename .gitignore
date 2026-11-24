@@ -1,57 +1,37 @@
-# Tauri / Rust
-/target
-/src-tauri/target
-/.tauri
+# Rust
+/target/
+**/*.rs.bk
+Cargo.lock
+*.pdb
 
-# Node / Vite
-node_modules
-/dist
-/.vite
+# Node.js
+node_modules/
+web/node_modules/
 
-# pnpm
-.pnpm-store
+# Build artifacts
+dist/
+build/
+target/
+*.log
 
 # IDE
-.vscode
-.idea
-*.suo
-*.sln
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Builds
-/release
-/build
-/*.exe
-/*.msi
-/*.dmg
-/*.app
+# Tauri
+src-tauri/target/
+src-tauri/Cargo.lock
 
-# Misc
-*.log
-.env
-.env.local
+# Generated files
+generated/
+*.gen.rs
 
-# Session / local data that must never be committed
-AppData/
-Google/
-Microsoft/
-.unsloth_attachments/
-Claude/
-npm-cache/
-unsloth-tmp/
-tauri-src/
-tu-src/
-build_cfg.txt
-*.crate
-*.tgz
-*.lnk
-.gitconfig
-
-# Python plugin runtime artifacts
-plugins/__pycache__/
-*.pyc
-dyrakDGram/
-unsloth-tmp/
+# Portable build
+portable/

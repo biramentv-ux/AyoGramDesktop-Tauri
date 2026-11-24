@@ -1,0 +1,152 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+  TauriBuild: "true"
+
+jobs:
+  build-windows:
+    name: Build Windows Portable
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd web
+          npm install
+          npm run build
+
+      - name: Build Tauri application
+        run: |
+          cd src-tauri
+          cargo build --release
+          cargo tauri build
+
+      - name: Create Windows portable version
+        run: |
+          mkdir portable
+          cp target/release/dyrak-dgram.exe portable/
+          cp -r resources/* portable/
+          tar -czf dyrak-dgram-windows-portable.tar.gz portable/
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dyrak-dgram-windows-portable
+          path: |
+            target/bundle/*/dyrak-dgram*.exe
+            dyrak-dgram-windows-portable.tar.gz
+
+  build-macos:
+    name: Build macOS
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd web
+          npm install
+          npm run build
+
+      - name: Build Tauri application
+        run: |
+          cd src-tauri
+          cargo build --release
+          cargo tauri build
+
+      - name: Upload macOS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dyrak-dgram-macos
+          path: target/bundle/*/dyrak-dgram*.dmg
+
+  build-linux:
+    name: Build Linux
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd web
+          npm install
+          npm run build
+
+      - name: Build Tauri application
+        run: |
+          cd src-tauri
+          cargo build --release
+          cargo tauri build
+
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dyrak-dgram-linux
+          path: target/bundle/*/dyrak-dgram*.AppImage
+
+  deploy-web:
+    name: Deploy Web Version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd web
+          npm install
+
+      - name: Build web application
+        run: |
+          cd web
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web/dist

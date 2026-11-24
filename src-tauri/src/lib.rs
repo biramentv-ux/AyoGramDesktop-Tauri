@@ -1,3 +1,6 @@
+// dyrakDGram Plugins Library
+// All premium features and Spotify integration with full plugin system
+
 pub mod plugins;
 
 use tauri::{Manager, App};
@@ -8,7 +11,13 @@ pub fn init_plugins(app: &mut App) {
     println!("Initializing dyrakDGram plugins...");
     
     // Initialize each plugin
-    plugins::init_plugins(app);
+    plugins::init_plugins();
+    
+    // Register plugin commands
+    app.setup(|_app, _api| {
+        println!("dyrakDGram plugin setup complete");
+        Ok(())
+    });
 }
 
 /// Plugin registry for dyrakDGram

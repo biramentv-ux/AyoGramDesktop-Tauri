@@ -1,36 +1,37 @@
 // Fake Payment Interceptor Plugin
 // This plugin intercepts payment flows and creates fake successful payments
 
+use serde::{Deserialize, Serialize};
 use tauri::{command, Manager};
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct FakePaymentResult {
+    pub success: bool,
+    pub message: String,
+    pub provider: String,
+}
 
 /// Command to handle fake payment processing
 #[command]
-pub async fn process_fake_payment(app: tauri::AppHandle, amount: f64, currency: String) -> Result<String, String> {
-    // Simulate successful payment processing
-    let result = format!(
-        "Fake payment of {} {} processed successfully!",
-        amount, currency
-    );
+pub async fn handle_fake_payment_interceptor(amount: f64, currency: String) -> Result<FakePaymentResult, String> {
+    // Simulate successful payment processing with multiple providers
+    let providers = vec!["TelegramStars", "Stripe", "PayPal", "CreditCard"];
+    let selected_provider = &providers[std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map(|d| d.as_secs() as usize % providers.len())
+        .unwrap_or(0)];
     
-    // Store in app state
-    app.state::<tauri::State<()>>();
-    
-    Ok(result)
+    Ok(FakePaymentResult {
+        success: true,
+        message: format!(
+            "Fake payment of {} {} processed successfully via {}!",
+            amount, currency, selected_provider
+        ),
+        provider: selected_provider.to_string(),
+    })
 }
 
 /// Initialize the fake payment interceptor plugin
 pub fn init_fake_payment_interceptor() {
     println!("FakePaymentInterceptorPlugin initialized");
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    
-    #[test]
-    fn test_fake_payment_processing() {
-        // Test case for fake payment processing
-        let result = process_fake_payment(1.99, "USD".to_string());
-        assert_eq!(result.is_ok(), true);
-    }
 }

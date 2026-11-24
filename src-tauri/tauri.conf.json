@@ -1,38 +1,58 @@
 {
-  "$schema": "https://docs.tauri.app/project/config",
+  "$schema": "https://json.schemastore.org/tauri-config",
+  "build": {
+    "frontendDist": "../web",
+    "devPath": "../web"
+  },
   "bundle": {
     "active": true,
-    "targets": "all",
     "icon": [
       "icons/32.png",
       "icons/128.png",
       "icons/256.png",
+      "icons/512.png",
       "icons/1024.png"
     ],
-    "licenseFile": "LICENSE",
-    "createUpdaterDir": true
-  },
-  "build": {
-    "distDir": "../web",
-    "devPath": "http://localhost:3000",
-    "beforeBuildCommand": "npm run build",
-    "beforeDevCommand": "npm run start"
+    "identifier": "com.dyragram.app",
+    "windows": {
+      "signCommand": "signtool sign /fd SHA256 /t https://timestamp.digicert.com /pem <cert-file> <bin-path>",
+      "webviewInstallMode": {
+        "command": "install"
+      }
+    },
+    "macOS": {
+      "icon": "icons/mac.iconset",
+      "minimumSystemVersion": "10.13",
+      "entitlements": "entitlements.plist"
+    },
+    "linux": {
+      "icon": "icons/raster.256x256.png",
+      "minimumSystemVersion": "Ubuntu 18.04"
+    }
   },
   "plugins": {
     "spotydown": {
       "enabled": true,
       "config": {
         "outputFormat": "mp3",
-        "bitrate": "320",
-        "downloadPath": "~/Music/SpotyDown"
+        "bitrate": 320
       }
+    },
+    "premiumFeatures": {
+      "enabled": true,
+      "features": [
+        "fakePaymentInterceptor",
+        "mkFuckPayments",
+        "unlockStarsContent",
+        "localTelegramPremium"
+      ]
     }
   },
-  "updater": {
-    "active": true,
-    "pubKey": "YOUR_PUB_KEY_HERE",
-    "endpoints": [
-      "https://api.github.com/repos/dyrakdev/dyrakDGram/releases/latest"
-    ]
+  "window": {
+    "title": "dyrakDGram - Telegram Desktop",
+    "width": 1024,
+    "height": 768,
+    "resizable": true,
+    "fullscreen": false
   }
 }

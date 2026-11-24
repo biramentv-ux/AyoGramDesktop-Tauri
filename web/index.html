@@ -1,175 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dyrakDGram - Telegram Desktop</title>
-    <meta name="description" content="Enhanced Telegram Desktop with music download capabilities">
-    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="css/style.css">
+    <title>dyrakDGram - Telegram Desktop Client</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Telegram Web App Header -->
-    <header class="app-header">
-        <div class="header-content">
-            <a href="/" class="logo">
-                <img src="/images/logo.svg" alt="dyrakDGram" class="logo-icon">
-                <span class="logo-text">dyrakDGram</span>
-            </a>
-            <nav class="nav-menu">
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#plugins" class="nav-link">Plugins</a>
-                <a href="#download" class="nav-link">Download</a>
-                <a href="#github" class="nav-link">GitHub</a>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Telegram_logo.svg" alt="Telegram Logo" width="40" height="40">
+                <h1>dyrakDGram</h1>
+            </div>
+            <nav class="nav">
+                <a href="#features">Възможности</a>
+                <a href="#plugins">Плъгини</a>
+                <a href="#download">Изтегляне</a>
+                <a href="#github" class="btn btn-primary">GitHub</a>
             </nav>
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">dyrakDGram - Enhanced Telegram Desktop</h1>
-            <p class="hero-subtitle">Experience the full power of Telegram with premium features and SpotyDown music integration</p>
-            <div class="hero-actions">
-                <a href="#download" class="btn btn-primary">Download Now</a>
-                <a href="https://github.com/dyrakdev/dyrakDGram" class="btn btn-secondary">View on GitHub</a>
+        <div class="container">
+            <div class="hero-content">
+                <h2>Съвременна Telegram десктоп клиент</h2>
+                <p>dyrakDGram предлага напреднал функционалност с вградени плъгини за омогуляване на потребителя.</p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn btn-large">Изтеглете сега</a>
+                    <a href="https://github.com/dyragram/dyragram" class="btn btn-outline">GitHub Repository</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
-            <h2 class="section-title">Featured Features</h2>
-            <div class="features-grid">
+            <h2>Основни възможности</h2>
+            <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🎵</div>
-                    <h3>Spotify Integration</h3>
-                    <p>Download high-quality music from Spotify with SpotyDown plugin</p>
+                    <div class="icon">🌟</div>
+                    <h3>Премиум функции</h3>
+                    <p>Напреднала система за управление на премиум възможности</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💳</div>
-                    <h3>Payment Bypass</h3>
-                    <p>Seamless payment system with MK_FuckPaymentsPlugin</p>
+                    <div class="icon">🎵</div>
+                    <h3>Spotify интеграция</h3>
+                    <p>Пряк достъп до Spotify музика чрез SpotyDown плъгин</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⭐</div>
-                    <h3>Premium Access</h3>
-                    <p>Unlock premium content and features locally</p>
+                    <div class="icon">💳</div>
+                    <h3>Плащания</h3>
+                    <p>Улеснена система за плащания и сметки</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Clean Interface</h3>
-                    <p>Modern, intuitive interface with Telegram design</p>
+                    <div class="icon">🌍</div>
+                    <h3>Български език</h3>
+                    <p>Пълна интеграция на български език</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Plugins Section -->
     <section id="plugins" class="plugins">
         <div class="container">
-            <h2 class="section-title">Available Plugins</h2>
-            <div class="plugins-grid">
-                <div class="plugin-card">
-                    <h3>SpotyDown Plugin</h3>
-                    <p>High-quality Spotify music downloader with MP3, WAV, FLAC support</p>
+            <h2>Вградени плъгини</h2>
+            
+            <div class="plugin-card">
+                <div class="plugin-icon">💰</div>
+                <div class="plugin-info">
+                    <h3>FakePaymentInterceptor</h3>
+                    <p>Интерцептира плащателните потоци и създава фалшиви успешни плащания. Идеално за тестване на плащателни системи.</p>
                 </div>
-                <div class="plugin-card">
-                    <h3>Fake Payment Interceptor</h3>
-                    <p>Custom payment handling system for enhanced user experience</p>
+            </div>
+            
+            <div class="plugin-card">
+                <div class="plugin-icon">💸</div>
+                <div class="plugin-info">
+                    <h3>MKFuckPayments</h3>
+                    <p>Избягва плащателни системи и активира премиум функции. Блокираният код за плащания автоматично се заменя.</p>
                 </div>
-                <div class="plugin-card">
-                    <h3>MK Fuck Payments</h3>
-                    <p>Advanced payment system bypass for seamless transactions</p>
+            </div>
+            
+            <div class="plugin-card">
+                <div class="plugin-icon">⭐</div>
+                <div class="plugin-info">
+                    <h3>UnlockStarsContent</h3>
+                    <p>Отключва всички Telegram Stars премиум съдържание. Всички функции без абонамент.</p>
                 </div>
-                <div class="plugin-card">
-                    <h3>Unlock Stars Content</h3>
-                    <p>Access premium content and features without subscription</p>
+            </div>
+            
+            <div class="plugin-card">
+                <div class="plugin-icon">🛡️</div>
+                <div class="plugin-info">
+                    <h3>LocalTelegramPremium</h3>
+                    <p>Активира локални премиум функции без абонамент. 100% работеща реализация.</p>
                 </div>
-                <div class="plugin-card">
-                    <h3>Local Telegram Premium</h3>
-                    <p>Enable local premium features for enhanced functionality</p>
+            </div>
+            
+            <div class="plugin-card">
+                <div class="plugin-icon">🎶</div>
+                <div class="plugin-info">
+                    <h3>SpotyDown</h3>
+                    <p>Интеграция с Spotify за музикално изтегляне. MP3/AAC/WAV поддръжка.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Download Section -->
     <section id="download" class="download">
         <div class="container">
-            <h2 class="section-title">Download dyrakDGram</h2>
-            <p class="download-intro">Get the latest version of dyrakDGram for your operating system</p>
-            <div class="download-grid">
-                <div class="download-card windows">
-                    <div class="platform-icon">Windows</div>
+            <h2>Изтеглете dyrakDGram</h2>
+            <p>Изберете вашата платформа за изтегляне:</p>
+            
+            <div class="platforms">
+                <div class="platform-card windows">
+                    <div class="platform-icon">🪟</div>
                     <h3>Windows Portable</h3>
-                    <p>ZIP file - No installation required</p>
-                    <a href="#" class="btn btn-download">Download ZIP</a>
+                    <p>Изтеглете версия за Windows без инсталация. Просто разархивирайте и стартирайте.</p>
+                    <a href="#" class="btn btn-primary">Изтеглете Windows версия</a>
                 </div>
-                <div class="download-card macos">
-                    <div class="platform-icon">macOS</div>
-                    <h3>macOS App</h3>
-                    <p>DMG installer - Native experience</p>
-                    <a href="#" class="btn btn-download">Download DMG</a>
+                
+                <div class="platform-card web">
+                    <div class="platform-icon">🌐</div>
+                    <h3>Web версия</h3>
+                    <p>Достъп до dyrakDGram през вашия уеб браузър. GitHub Pages интеграция.</p>
+                    <a href="#" class="btn btn-primary">Отворете Web версия</a>
                 </div>
-                <div class="download-card linux">
-                    <div class="platform-icon">Linux</div>
-                    <h3>AppImage</h3>
-                    <p>Portable executable - Run directly</p>
-                    <a href="#" class="btn btn-download">Download AppImage</a>
+                
+                <div class="platform-card linux">
+                    <div class="platform-icon">🐧</div>
+                    <h3>Linux</h3>
+                    <p>Съвместим с всички основни дистрибуции. Snap/Flatpak пакети.</p>
+                    <a href="#" class="btn btn-primary">Изтеглете Linux версия</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="app-footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="/images/logo.svg" alt="dyrakDGram" class="footer-logo-icon">
-                    <span class="footer-logo-text">dyrakDGram</span>
+                <div class="footer-section">
+                    <h3>dyrakDGram</h3>
+                    <p>Съвременен Telegram десктоп клиент с разширени възможности.</p>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-section">
-                        <h4>Product</h4>
-                        <a href="#features">Features</a>
-                        <a href="#plugins">Plugins</a>
-                        <a href="#download">Download</a>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Resources</h4>
-                        <a href="https://github.com/dyrakdev/dyrakDGram">GitHub</a>
-                        <a href="https://t.me/dyrakdgram">Telegram Channel</a>
-                        <a href="https://dyrakdgram.dyraf.com/docs">Documentation</a>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Legal</h4>
-                        <a href="/LICENSE">License</a>
-                        <a href="/terms">Terms of Use</a>
-                        <a href="/privacy">Privacy Policy</a>
-                    </div>
+                
+                <div class="footer-section">
+                    <h3>Ресурси</h3>
+                    <ul>
+                        <li><a href="https://github.com/dyragram/dyragram">GitHub Repository</a></li>
+                        <li><a href="https://github.com/dyragram/dyragram/releases">Изкачвания</a></li>
+                        <li><a href="https://github.com/dyragram/dyragram/issues">Баг триker</a></li>
+                    </ul>
                 </div>
-                <div class="footer-social">
-                    <a href="https://github.com/dyrakdev" class="social-link">GitHub</a>
-                    <a href="https://t.me/dyrakdgram" class="social-link">Telegram</a>
+                
+                <div class="footer-section">
+                    <h3>Поддръжка</h3>
+                    <ul>
+                        <li><a href="https://t.me/dyragram">Telegram група</a></li>
+                        <li><a href="https://github.com/dyragram/dyragram#-support">Документация</a></li>
+                        <li><a href="https://github.com/dyragram/dyragram/blob/main/LICENSE">MIT Лиценз</a></li>
+                    </ul>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2025 dyrakDGram. All rights reserved.</p>
-                <p>Designed with ❤️ by Dyrak</p>
+                <p>&copy; 2026 dyrakDGram. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

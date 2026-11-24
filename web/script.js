@@ -1,41 +1,68 @@
-// Initialize application
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('dyrakDGram web interface loaded');
+// dyrakDGram Web Application
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize plugin system
+    console.log('dyrakDGram web application initialized');
     
-    // Add event listeners for all interactive elements
-    document.querySelectorAll('.btn').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const pluginName = e.target.closest('.plugin-card').querySelector('.plugin-name').textContent;
-            console.log(`Button clicked in ${pluginName}`);
-        });
-    });
+    // Plugin registry
+    const plugins = {
+        fakePaymentInterceptor: {
+            name: 'FakePaymentInterceptor',
+            description: 'Интерцептира плащателните потоци и създава фалшиви успешни плащания'
+        },
+        mkFuckPayments: {
+            name: 'MKFuckPayments', 
+            description: 'Избягва плащателни системи и активира премиум функции'
+        },
+        unlockStarsContent: {
+            name: 'UnlockStarsContent',
+            description: 'Отключва всички Telegram Stars премиум съдържание'
+        },
+        localTelegramPremium: {
+            name: 'LocalTelegramPremium', 
+            description: 'Активира локални премиум функции без абонамент'
+        },
+        spotyDown: {
+            name: 'SpotyDown',
+            description: 'Spotify интеграция за музикално изтегляне'
+        }
+    };
     
-    // Auto-focus search inputs
-    document.getElementById('spotifyTrackId').addEventListener('focus', () => {
-        console.log('Focus on Spotify Track ID input');
-    });
+    // Display plugin information
+    function displayPlugins() {
+        const container = document.querySelector('.plugin-list');
+        if (container) {
+            Object.entries(plugins).forEach(([key, plugin]) => {
+                const card = document.createElement('div');
+                card.className = 'plugin-card';
+                card.innerHTML = `
+                    <h3>${plugin.name}</h3>
+                    <p>${plugin.description}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+    }
+    
+    // Initialize plugins on load
+    displayPlugins();
+    
+    // Spotify integration demo
+    const spotyDownPlugin = {
+        downloadTrack: async function(trackId, format = 'mp3', bitrate = 320) {
+            return `Downloading track ${trackId} in ${format} at ${bitrate}kbps`;
+        },
+        searchTracks: async function(query) {
+            return `Searching for: ${query}`;
+        },
+        convertFormat: async function(inputPath, outputFormat, bitrate) {
+            return `Converting to ${outputFormat} at ${bitrate}kbps`;
+        }
+    };
+    
+    // Export for use in other modules
+    window.dyrakDGram = {
+        plugins,
+        spotyDownPlugin
+    };
 });
-
-// Theme toggle functionality
-function toggleTheme() {
-    const body = document.body;
-    if (body.style.backgroundColor === '#17212b') {
-        body.style.backgroundColor = '#ffffff';
-        body.style.color = '#17212b';
-    } else {
-        body.style.backgroundColor = '#17212b';
-        body.style.color = '#ffffff';
-    }
-}
-
-// Responsive design
-function resizeHandler() {
-    const screenWidth = window.innerWidth;
-    if (screenWidth < 768) {
-        console.log('Mobile view activated');
-    } else {
-        console.log('Desktop view activated');
-    }
-}
-
-window.addEventListener('resize', resizeHandler);

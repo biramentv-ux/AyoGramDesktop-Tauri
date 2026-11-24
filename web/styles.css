@@ -1,3 +1,4 @@
+/* Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,145 +7,317 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #17212b;
-    color: white;
-    min-height: 100vh;
-    padding: 20px;
+    line-height: 1.6;
+    color: #1a1917;
+    background-color: #ffffff;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #233e52;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-h1 {
-    margin: 0;
-    font-size: 24px;
-}
-
-.brand-logo {
-    width: 40px;
-    height: 40px;
-    background-color: #64b5f6;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
+/* Header */
+.header {
+    background: linear-gradient(135deg, #34b7f1 0%, #1a9ad0 100%);
     color: white;
-    font-size: 20px;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.main-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.plugin-card {
-    background-color: #233e52;
-    border-radius: 8px;
-    padding: 20px;
-    transition: transform 0.2s;
-}
-
-.plugin-card:hover {
-    transform: translateY(-5px);
-}
-
-.plugin-header {
+.logo {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    gap: 12px;
 }
 
-.plugin-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 6px;
-    margin-right: 10px;
+.logo h1 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.nav {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
+    gap: 30px;
 }
 
-.plugin-name {
-    font-weight: bold;
-    font-size: 18px;
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s;
 }
 
-.plugin-desc {
-    color: #8d9bc4;
-    margin-bottom: 15px;
+.nav a:hover {
+    opacity: 0.8;
 }
 
 .btn {
-    background-color: #64b5f6;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.2s;
-}
-
-.btn:hover {
-    background-color: #5aa1e0;
-}
-
-.action-area {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #17212b;
-    border-radius: 6px;
-}
-
-input[type="number"], input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 6px;
-    border: 1px solid #374b60;
-    background-color: #233e52;
-    color: white;
-}
-
-.status {
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 6px;
-    background-color: #374b60;
-}
-
-.success {
-    background-color: #2d5a3e;
-    color: #8fbc8f;
-}
-
-.error {
-    background-color: #6b2424;
-    color: #bb6b6b;
-}
-
-footer {
-    margin-top: 30px;
-    text-align: center;
-    color: #8d9bc4;
-}
-
-footer a {
-    color: #64b5f6;
+    padding: 12px 24px;
+    border-radius: 8px;
     text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: white;
+    color: #34b7f1;
+}
+
+.btn-outline {
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+}
+
+/* Hero Section */
+.hero {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f0f4f8 0%, #e6ebf0 100%);
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #1a1917;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #5e6d82;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Features Section */
+.features {
+    padding: 80px 0;
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    color: #1a1917;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card .icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #1a1917;
+}
+
+.feature-card p {
+    color: #5e6d82;
+}
+
+/* Plugins Section */
+.plugins {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.plugins h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+}
+
+.plugin-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 40px;
+    background: white;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    transition: transform 0.3s;
+}
+
+.plugin-card:hover {
+    transform: translateY(-3px);
+}
+
+.plugin-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.plugin-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #1a1917;
+}
+
+.plugin-info p {
+    color: #5e6d82;
+}
+
+/* Download Section */
+.download {
+    padding: 80px 0;
+}
+
+.download h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.download > .container > p {
+    text-align: center;
+    color: #5e6d82;
+    margin-bottom: 60px;
+    font-size: 1.2rem;
+}
+
+.platforms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.platform-card {
+    padding: 40px 30px;
+    border-radius: 16px;
+    transition: transform 0.3s;
+}
+
+.platform-card:hover {
+    transform: translateY(-5px);
+}
+
+.windows {
+    background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
+    color: white;
+}
+
+.linux {
+    background: linear-gradient(135deg, #e37c28 0%, #c65a1b 100%);
+    color: white;
+}
+
+.web {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+}
+
+.platform-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.platform-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.platform-card p {
+    margin-bottom: 20px;
+}
+
+/* Footer */
+.footer {
+    background: #1a1917;
+    color: white;
+    padding: 60px 0 30px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section a {
+    color: #a0a0a0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav {
+        display: none; /* Simple mobile nav - would need full implementation */
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .plugin-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Buttons */
+.btn-large {
+    padding: 16px 32px;
+    font-size: 1.2rem;
 }

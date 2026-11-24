@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dyrakDGram - Telegram Desktop</title>
-    <meta name="description" content="Enhanced Telegram Desktop with music download capabilities">
+    <title>dyrakDGram - Telegram Desktop Client</title>
+    <meta name="description" content="Enhanced Telegram Desktop with music download capabilities and premium features">
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
@@ -12,8 +12,10 @@
   <link rel="stylesheet" href="/assets/index-c404c639.css">
 </head>
 <body>
-    <!-- Telegram Web App Header -->
-    <header class="app-header">
+    <div id="root"></div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
         <div class="header-content">
             <a href="/" class="logo">
                 <img src="/images/logo.svg" alt="dyrakDGram" class="logo-icon">
@@ -32,28 +34,12 @@
             </button>
         </div>
     </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">dyrakDGram - Enhanced Telegram Desktop</h1>
-            <p class="hero-subtitle">Experience the full power of Telegram with premium features and SpotyDown music integration</p>
-            <div class="hero-actions">
-                <a href="#download" class="btn btn-primary">Download Now</a>
-                <a href="https://github.com/dyrakdev/dyrakDGram" class="btn btn-secondary">View on GitHub</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2 class="section-title">Featured Features</h2>
+            <h2 class="section-title">dyrakDGram - Telegram Desktop Client</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🎵</div>
-                    <h3>Spotify Integration</h3>
-                    <p>Download high-quality music from Spotify with SpotyDown plugin</p>
+                    <h3>SpotyDown Plugin</h3>
+                    <p>Seamless Spotify integration with high-quality music download capabilities</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💳</div>

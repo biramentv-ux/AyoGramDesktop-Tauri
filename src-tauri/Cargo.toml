@@ -1,31 +1,23 @@
 [package]
 name = "dyrak-dgram"
 version = "1.0.0"
-description = "dyrakDGram - Telegram Desktop with advanced plugins and SpotyDown integration"
+description = "Telegram-based desktop client with premium features and Spotify integration"
 authors = ["Dyrak"]
 license = "MIT"
 repository = "https://github.com/dyrakdev/dyrakDGram"
-
-[workspace]
-members = [
-  ".",
-  "plugins/spotydown",
-  "plugins/fake_payment_interceptor",
-  "plugins/mk_fuck_payments",
-  "plugins/unlock_stars_content",
-  "plugins/local_telegram_premium",
-]
+default-run = "dyrak-dgram"
 
 [dependencies]
 tauri = { version = "1.8", features = ["api-all", "system-tray", "tray-icon"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-reqwest = { version = "1.6", features = ["json", "rustls-tls"] }
 tokio = { version = "1.37", features = ["full"] }
+reqwest = { version = "1.6", features = ["json", "rustls-tls"] }
 
 [build-dependencies]
 tauri-build = "1.8"
 
 [features]
-default = ["custom-protocol"]
-custom-protocol = []
+default = ["tauri/default"]
+product-icons = ["tauri/product-icons"]
+development = ["tauri/development"]

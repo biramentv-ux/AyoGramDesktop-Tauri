@@ -18,7 +18,7 @@
   "author": "Dyrak",
   "license": "MIT",
   "devDependencies": {
-    "vite": "^4.5.0",
+    "vite": "^6.4.5",
     "serve": "^14.2.0"
   }
 }

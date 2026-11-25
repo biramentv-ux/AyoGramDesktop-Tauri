@@ -380,3 +380,33 @@ outputs = generator.generate_batch(
 ### Version History
 - **v1.0.0**: Initial release with image-to-image support
 - **v1.0.1**: Added batch generation and Telegram server integration
+
+## 🌐 Custom Domain: dyrakarmy.eu
+
+### GitHub Pages Configuration
+The project now uses `dyrakarmy.eu` as the custom domain for GitHub Pages.
+
+### DNS Setup Required
+Add these DNS records to your domain registrar:
+
+| Type | Name | Value | TTL |
+|------|------|-------|-----|
+| A | @ | 185.199.108.153 | Auto |
+| A | @ | 185.199.109.153 | Auto |
+| A | @ | 185.199.110.153 | Auto |
+| A | @ | 185.199.111.153 | Auto |
+| CNAME | www | biramentv-ux.github.io | Auto |
+
+### GitHub Repository Settings
+1. Go to **Settings** > **Pages**
+2. Under **Custom domain**, enter: `dyrakarmy.eu`
+3. Click **Save**
+4. Wait for DNS propagation
+
+### URLs
+- **Main Site**: https://dyrakarmy.eu
+- **WWW Version**: https://www.dyrakarmy.eu
+- **GitHub Pages**: https://biramentv-ux.github.io/dyrakDGram
+
+### SSL Certificate
+GitHub automatically provisions an SSL certificate for custom domains. It may take up to 24 hours to activate.

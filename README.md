@@ -395,7 +395,7 @@ Add these DNS records to your domain registrar:
 | A | @ | 185.199.109.153 | Auto |
 | A | @ | 185.199.110.153 | Auto |
 | A | @ | 185.199.111.153 | Auto |
-| CNAME | www | biramentv-ux.github.io | Auto |
+| CNAME | www | dyrakarmy.eu | Auto |
 
 ### GitHub Repository Settings
 1. Go to **Settings** > **Pages**
@@ -406,7 +406,7 @@ Add these DNS records to your domain registrar:
 ### URLs
 - **Main Site**: https://dyrakarmy.eu
 - **WWW Version**: https://www.dyrakarmy.eu
-- **GitHub Pages**: https://biramentv-ux.github.io/dyrakDGram
+- **GitHub Pages**: https://dyrakarmy.eu
 
 ### SSL Certificate
 GitHub automatically provisions an SSL certificate for custom domains. It may take up to 24 hours to activate.
